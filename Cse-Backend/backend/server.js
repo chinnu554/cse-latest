@@ -25,7 +25,7 @@ app.use("/",studentsRouter);
 app.use("/",LoginRouter);
 
 app.get("/", (req, res) => {
-  res.send("Server is running");
+  res.send("Server is running hello devsparks");
 });
 
 const PORT = process.env.PORT || 5000;
