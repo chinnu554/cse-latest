@@ -1,0 +1,32 @@
+.clg-logo{
+    width: 100px;
+    height: 100px;
+}
+.header{
+    display: flex;
+    gap: 10px;
+    box-shadow: 3px 3px 3px   rgba(0, 0, 0, 0.123);
+    background:  rgb(255, 255, 255);
+    padding:10px;
+}
+h3{
+    margin-top: -15px;
+}
+@media screen and (max-width:768px){
+    img{
+        width:70px;
+        height: 70px;
+        margin-top: 10px ;
+
+    }
+    .branch-img{
+        width: 90px;
+        height: 90px;
+    }
+    .header h3{
+       display: none;
+    }
+    h1{
+        font-size: 25px;
+    }
+}

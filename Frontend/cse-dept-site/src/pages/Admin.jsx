@@ -1,0 +1,265 @@
+import { useState,useEffect} from "react";
+import "./Admin.css";
+
+function AdminPanel() {
+  const [accessToken, setAccessToken] = useState(false);
+  useEffect(() => {
+    
+  } 
+, []);
+  
+
+  const [username, setUsername] = useState("");
+  const [role, setRole] = useState("");
+  const [email, setEmail] = useState("");
+  const [image, setImage] = useState(null);
+
+  const [pdf, setPdf] = useState(null);
+  const [year, setYear] = useState("");
+  const [semester, setSemester] = useState("");
+  const [subject, setSubject] = useState("");
+  const [fileType,setFileType] = useState("")
+  const [unit, setUnit] = useState("");
+
+  const [message, setMessage] = useState("");
+  const [uploading, setUploading] = useState(false);
+  const [downloadUrl, setDownloadUrl] = useState("");
+
+  async function submitLogin(){
+    try{
+      const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    let result = await fetch("http://localhost:5000/login",{
+      method:'post',
+      headers:{
+        'Content-Type':'application/json'
+      },
+      body:JSON.stringify({username,password})
+    });
+    const data = await result.json();
+    document.getElementById("username").value="";
+    document.getElementById("password").value="";
+    document.getElementById("demo").innerHTML=data.message;
+    document.getElementById("demo").style.color = data.message === "Login successful" ? "green" : "red";
+    if(data.access){
+      console.log("access granted");
+      setAccessToken(true);
+    }
+    
+    }
+    catch(err){
+      console.error(err);
+    }
+  }
+
+  const handleUserSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!image) return setMessage("Please select an image");
+
+    const formData = new FormData();
+    formData.append("username", username);
+    formData.append("role", role);
+    formData.append("email", email);
+    formData.append("image", image);
+
+    try {
+      const res = await fetch("http://localhost:5000/facultycreate/uploadTeaching", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        setMessage("User added successfully!");
+        setUsername("");
+        setRole("");
+        setEmail("");
+        setImage(null);
+        document.getElementById("img").value = null;
+      } else {
+        setMessage(data.message || "Something went wrong");
+      }
+    } catch (err) {
+      console.error(err);
+      setMessage("Server error");
+    }
+  };
+
+  const handlePdfSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!pdf) return setMessage("Please select a PDF");
+
+    if (!year || !semester || !subject ||!fileType) {
+      return setMessage("Please fill in all PDF fields");
+    }
+
+    setUploading(true);
+    setMessage("");
+    setDownloadUrl("");
+
+    try {
+      const formData = new FormData();
+      formData.append("pdf", pdf);
+      formData.append("year", year);
+      formData.append("semester", semester);
+      formData.append("subject", subject);
+      formData.append("fileType",fileType)
+      formData.append("unit", unit);
+
+      const res = await fetch("http://localhost:5000/materials/upload-pdf", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        setMessage(data.message);
+        setDownloadUrl(data.downloadUrl);
+        setPdf(null);
+        setYear("");
+        setSemester("");
+        setSubject("");
+        setFileType("");
+        setUnit("");
+        document.getElementById("pdf").value = null;
+      } else {
+        setMessage(data.error || "PDF upload failed");
+      }
+    } catch (err) {
+      console.error(err);
+      setMessage("Server error while uploading PDF");
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  return (
+    <>
+    {
+      (!accessToken) ? (
+        <div className="loginpage">
+    <div className="loginbox">
+      <h2>Admin Login</h2> 
+        <div className="userbox">
+          
+          <input type="text" id="username" placeholder="username" required/>
+        </div>  
+        <div className="userbox">
+          
+          <input type="password" id="password" placeholder="password" required/>
+        </div>  
+        <button type="submit"  onClick={submitLogin}>Submit</button>  
+        <p id="demo">Enter login credentials</p>
+      </div>
+    </div>
+      ) 
+      :
+      (
+        <div>
+      <div style={{ maxWidth: "600px", margin: "50px auto", textAlign: "center" }}>
+      <h1>Admin Panel</h1>
+
+     
+      <h2>Add User</h2>
+      <form onSubmit={handleUserSubmit}>
+        <input
+          type="file"
+          id="img"
+          accept="image/*"
+          onChange={(e) => setImage(e.target.files[0])}
+          required
+        /><br /><br />
+        <input
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
+        /><br /><br />
+        <input
+          type="text"
+          placeholder="Role"
+          value={role}
+          onChange={(e) => setRole(e.target.value)}
+          required
+        /><br /><br />
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        /><br /><br />
+        <button type="submit">Add User</button>
+      </form>
+
+      <hr style={{ margin: "40px 0" }} />
+
+     
+      <h2>Upload PDF</h2>
+      <form onSubmit={handlePdfSubmit}>
+        <input
+          type="file"
+          id="pdf"
+          accept="application/pdf"
+          onChange={(e) => setPdf(e.target.files[0])}
+          required
+        /><br /><br />
+        <input
+          type="text"
+          placeholder="Year"
+          value={year}
+          onChange={(e) => setYear(e.target.value)}
+          required
+        /><br /><br />
+        <input
+          type="text"
+          placeholder="Semester"
+          value={semester}
+          onChange={(e) => setSemester(e.target.value)}
+          required
+        /><br /><br />
+        <input
+          type="text"
+          placeholder="Subject"
+          value={subject}
+          onChange={(e) => setSubject(e.target.value)}
+          required
+        /><br /><br />
+        <input
+          type="text"
+          placeholder="file type"
+          value={fileType}
+          onChange={(e) => setFileType(e.target.value)}
+          required
+        /><br /><br />
+        <input
+          type="text"
+          placeholder="Unit"
+          value={unit}
+          onChange={(e) => setUnit(e.target.value)}
+          required
+        /><br /><br />
+        <button type="submit" disabled={uploading}>
+          {uploading ? "Uploading..." : "Upload PDF"}
+        </button>
+      </form>
+      {message && <p>{message}</p>}
+      {downloadUrl && (
+        <p>
+          PDF Download: <a href={downloadUrl} target="_blank" rel="noopener noreferrer">Click here</a>
+        </p>
+      )}
+    </div>
+    </div>
+      )  
+    }
+    
+    
+    </>
+  );
+}
+
+export default AdminPanel;

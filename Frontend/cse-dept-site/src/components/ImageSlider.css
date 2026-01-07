@@ -1,0 +1,25 @@
+.slide-img{
+    width: 100%;
+    height: 600px;
+}
+.slider{
+    margin: 30px 25px;
+    border-radius: 10px;
+}
+.slider:hover{
+    cursor: grabbing;
+}
+.img-slider h1{
+      margin: 30px 25px;
+      border-left: 4px solid #21485e;
+      color: #21485e;
+      padding-left: 10px; 
+}
+@media screen and (max-width:768px) {
+   .slide-img{
+    height: 250px;
+   }
+   .slider{
+    margin: 20px 0px;
+   }
+}
