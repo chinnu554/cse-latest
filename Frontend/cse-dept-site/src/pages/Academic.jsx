@@ -50,7 +50,8 @@ function Academic(){
         </div>
         <div className="academic-page">
         <h2>Coursed Offered</h2>
-        <table>
+            <div className="table-wrapper">
+                <table>
         <tr>
             <th>Course</th>
             <th>Specialization</th>
@@ -72,6 +73,7 @@ function Academic(){
             <td>18</td>
          </tr>
          </table>
+            </div>
         </div>
         
         </>
