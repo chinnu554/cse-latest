@@ -47,7 +47,7 @@ function Navbar() {
               <Link className="mob-link" onClick={()=>{setOpen(!open)}} to="/">Home</Link>
               <Link className="mob-link" onClick={()=>{setOpen(!open)}} to="/admin">Admin</Link>
               <p className="seperator" >─────────────────</p>
-              <Link className="mob-link" onClick={()=>{setOpen(!open)}} to="/">Coursed Offered</Link>
+              <Link className="mob-link" onClick={()=>{setOpen(!open)}} to="/academic">Academics</Link>
               <p className="seperator" >─────────────────</p>
               <Link className="mob-link" onClick={()=>{setOpen(!open)}} to="/faculty">Faculty</Link>
               <Link className="mob-link" onClick={()=>{setOpen(!open)}} to="/students">Students</Link>
@@ -82,7 +82,7 @@ function Navbar() {
 
         <Link className="sep-links" to="/admin"><button className="link-btn">Admins</button></Link>
 
-        <Link className="sep-links" to="/admin"><button className="link-btn">Acadamics</button></Link>
+        <Link className="sep-links" to="/academic"><button className="link-btn">Acadamics</button></Link>
 
         <div className="dropdown">
           <button>People▾</button>

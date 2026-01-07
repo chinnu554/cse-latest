@@ -36,8 +36,21 @@ function Home(){
             <div className="showcase">
         </div>
         <section>
+            <div className="vision">
+            <h1>Vision</h1>
+            <p>To empower the graduates to be technologically adept, innovative, self-motivated and responsible citizens, possessing human values and contribute significantly towards being a centre of excellence in providing globally standard education, through a conducive Teaching and Research environment, that responds swiftly to the challenges of the ever-changing world.</p>
+            </div>
+            <div className="mission">
+            <h1>Mission</h1>
+            <ul>
+                <li>To achieve academic excellence by imparting in-depth knowledge to the students through effective trainings and hands on experience on latest tools and technologies.</li>
+                <li>To pursue interdisciplinary research that will serve the needs of the entire global community..</li>
+                <li>To prepare students to be continuous learners in a connected world and imbibe professional skills and ethical responsibilities in them.</li>
+                <li>To strengthen the industry-Academia interface that will help the graduates to emerge as leaders in academics or an inspiring revolutionary in entrepreneurship.</li>
+            </ul>
+            </div>
         </section>
-        
+          
             <div className="hod-card">
                 <h1>Head OF Department - CSE</h1>
                 <div className="hod-details" >

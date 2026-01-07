@@ -6,6 +6,7 @@ import Home from './pages/Home.jsx'
 import Faculty from "./pages/Faculty.jsx";
 import Students from './pages/Students.jsx';
 import Admin from './pages/Admin.jsx';
+import Academic from './pages/Academic.jsx';
 import DeptFac from './pages/DeptFac.jsx';
 import {Routes,Route} from "react-router-dom"
 import ScrollToTopButton from './components/ScrollButton/scrollButton.jsx';
@@ -25,6 +26,7 @@ function App() {
       <Route path='/students' element={<Students/>}/>
       <Route path='/admin' element={<Admin/>}/>
       <Route path='/dept-facility' element={<DeptFac/>}/>
+      <Route path='/academic' element={<Academic/>}/>
     </Routes>
     <ScrollToTopButton></ScrollToTopButton>
     <Footer/>
