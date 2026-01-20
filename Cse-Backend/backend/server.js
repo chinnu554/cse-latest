@@ -7,6 +7,7 @@ import facultyCreate from "./routes/facultyCreate.js";
 import pdfRoute from './routes/pdfRoutes.js'
 import studentsRouter from './routes/studentsRouter.js'
 import LoginRouter from './routes/login.js'
+import cloudinaryImages from './routes/cloudinaryImages.js'
 
 dotenv.config();
 const app = express();
@@ -23,6 +24,7 @@ app.use("/facultycreate", facultyCreate);
 app.use("/materials",pdfRoute);
 app.use("/",studentsRouter);
 app.use("/",LoginRouter);
+app.use("/",cloudinaryImages)
 
 app.get("/", (req, res) => {
   res.send("Server is running hello devsparks");

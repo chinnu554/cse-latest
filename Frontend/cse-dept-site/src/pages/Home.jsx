@@ -48,6 +48,7 @@ function Home(){
                 <li>To prepare students to be continuous learners in a connected world and imbibe professional skills and ethical responsibilities in them.</li>
                 <li>To strengthen the industry-Academia interface that will help the graduates to emerge as leaders in academics or an inspiring revolutionary in entrepreneurship.</li>
             </ul>
+            
             </div>
         </section>
           
@@ -62,8 +63,6 @@ function Home(){
                     <ul>
                         <li>MR.T.SURESH</li>
                         <li>Associate Professor & HOD</li>
-                        <li>Department of CSE</li>
-                        <li>Gokula Krishna College of Engineering, Sullurpeta.</li>
                         <li>E-mail ID: suresh@gkce.edu.in</li>
                     </ul>
                     <hr />

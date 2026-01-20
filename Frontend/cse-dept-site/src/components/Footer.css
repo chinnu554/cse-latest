@@ -1,8 +1,6 @@
 
 .footer-img{
-  background:
-    linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
-    url("../assets/footer.jpg");
+  background:#21485e;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -12,7 +10,7 @@
 }
 
 .college-footer{
-  background-color: #21485e;
+  background-color: #000000;
   color: #ffffff;
   text-align: center;
   padding: 15px 10px;
@@ -33,7 +31,6 @@
   transform: translateX(0);
 }
 .footer-links{
-  text-align: center;
   opacity: 0;
   transform: translateY(60px);
   transition: opacity 1.5s ease-out, transform 1.5s ease-out;
@@ -65,7 +62,9 @@ footer a:hover{
 footer h3{
   margin-left: 20px;
 }
-
+.devsparks{
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
 
 
 .footer-details{
@@ -89,6 +88,8 @@ footer h3{
   .footer-details{
     flex-direction: column;
     margin-top: 0;
+    gap: 60px;
+    flex-wrap: wrap;
   }
 
   footer h3{

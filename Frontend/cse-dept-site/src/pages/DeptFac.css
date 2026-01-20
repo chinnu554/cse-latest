@@ -77,6 +77,64 @@
         width: 45%;
     }
 }
+/* Fullscreen viewer / lightbox */
+.viewer {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999999999;
+}
+
+.viewer-img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+
+/* Close button */
+.close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 28px;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Image counter */
+.count {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    color: white;
+    font-size: 16px;
+}
+
+/* Navigation arrows */
+.nav {
+    position: absolute;
+    top: 50%;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+    transform: translateY(-50%);
+    padding: 10px;
+}
+
+.nav.left {
+    left: 30px;
+}
+
+.nav.right {
+    right: 30px;
+}
+
 
 /* Mobile */
 @media (max-width: 600px) {

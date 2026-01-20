@@ -58,7 +58,7 @@ function Navbar() {
               <Link className="mob-link" onClick={()=>{setOpen(!open)}} to="/">3rd year materials</Link>
               <Link className="mob-link" onClick={()=>{setOpen(!open)}} to="/">4th year materials</Link>
               <p className="seperator" >─────────────────</p>
-              <Link className="mob-link" onClick={()=>{setOpen(!open)}} to="/">Photo Gallery</Link>
+              <Link className="mob-link" onClick={()=>{setOpen(!open)}} to="/photo-gallery">Photo Gallery</Link>
               <Link className="mob-link" onClick={()=>{setOpen(!open)}} to="/">Placements</Link>
 
             </div>
@@ -108,7 +108,7 @@ function Navbar() {
           <div className="dropdown">
           <button>Others▾</button>
           <div className="content">
-            <Link to="">Photos Gallery</Link>
+            <Link to="/photo-gallery">Photos Gallery</Link>
             <Link to="">Placements</Link>
           </div>
         </div>

@@ -43,12 +43,12 @@ function Footer() {
             </div>
           </div>
           <div className='footer-links'>
-            <h3>Important Links</h3>
-          
+            <h3 style={{marginLeft:"-10px"}}>Important Links</h3>
+            
+            <a href="https://gkce.edu.in/" target='_blank'>Gokula Krishna College of Engineering</a><br />
             <a href="https://swayam.gov.in/" target='_blank'>Swayam</a><br />
             <a href="https://ndl.iitkgp.ac.in/" target='_blank'>National Digital Library</a><br />
             <a href="https://nad.gov.in/" target='_blank'>National Academic Depository</a><br />
-            <a href="https://gkce.edu.in/" target='_blank'>Gokula Krishna College of Engineering</a><br />
 
           </div>
           <div className='footer-maps'>
@@ -63,8 +63,9 @@ function Footer() {
         </div>
       </div>
       <div className='college-footer'>
-        <p>© {year} Your College Name. All Rights Reserved.</p>
-        <p>Designed and mataining by <b>Dev Sparks</b></p>
+        <p>© {year} Gokula Krishna College of Engineering . All Rights Reserved.</p>
+        <p>Designed and mataining by</p>
+        <a className='devsparks' href="https://eswar.devsparks.online/" target='_blank'><b>Dev Sparks</b></a>  
       </div>
     </footer>
     </>

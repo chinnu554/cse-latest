@@ -10,6 +10,7 @@ import Academic from './pages/Academic.jsx';
 import DeptFac from './pages/DeptFac.jsx';
 import {Routes,Route} from "react-router-dom"
 import ScrollToTopButton from './components/ScrollButton/scrollButton.jsx';
+import Photo from './pages/Photo.jsx';
 function App() {
  
   useEffect(()=>{
@@ -27,6 +28,7 @@ function App() {
       <Route path='/admin' element={<Admin/>}/>
       <Route path='/dept-facility' element={<DeptFac/>}/>
       <Route path='/academic' element={<Academic/>}/>
+      <Route path='/Photo-gallery' element={<Photo/>}/>
     </Routes>
     <ScrollToTopButton></ScrollToTopButton>
     <Footer/>
