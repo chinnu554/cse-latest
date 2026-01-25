@@ -20,17 +20,17 @@ function ImageSlider() {
         const res = await fetch("http://localhost:5000/slider-images");
         const data = await res.json();
         setImgs(data.data || data);
+        setLoading(false);
       } catch (err) {
         console.error(err);
-      } finally {
-        setLoading(false);
       }
+
     }
     fetchSliderImages();
   }, []);
 
-  const openViewer = (index) => {
-    setCurrentIndex(index);
+  const openViewer = (realIndex) => {
+    setCurrentIndex(realIndex);
     setIsOpen(true);
   };
 
@@ -42,19 +42,29 @@ function ImageSlider() {
   const nextImage = () =>
     setCurrentIndex((prev) => (prev === imgs.length - 1 ? 0 : prev + 1));
 
-  if (loading) return <h2 style={{ textAlign: "center" }}>Loading...</h2>;
+  if (loading) {
+    return (
+      <div className="loading-container">
+        <div className="spinner"></div>
+        <p>Loading faculty...</p>
+      </div>
+    );
+  }
 
   return (
     <>
-      {/* Slider */}
       <div className="img-slider">
         <Swiper
           modules={[Autoplay, Pagination, Navigation]}
           slidesPerView={1}
-          loop
+          loop={true}
           autoplay={{ delay: 5000 }}
           pagination={{ clickable: true }}
           navigation
+          onSlideChange={(swiper) => {
+            // keeps viewer index correct if needed later
+            setCurrentIndex(swiper.realIndex);
+          }}
         >
           {imgs.map((img, index) => (
             <SwiperSlide key={index}>
@@ -62,14 +72,16 @@ function ImageSlider() {
                 className="slide-img"
                 src={img}
                 alt="slider"
-                onClick={() => openViewer(index)}
+                onClick={(e) => {
+                  const swiper = e.target.closest(".swiper")?.swiper;
+                  openViewer(swiper.realIndex);
+                }}
               />
             </SwiperSlide>
           ))}
         </Swiper>
       </div>
 
-      {/* Fullscreen Viewer */}
       {isOpen && (
         <div className="viewer">
           <span className="close" onClick={closeViewer}>✕</span>

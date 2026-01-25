@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Admin.css";
+import { FaUser, FaLock } from 'react-icons/fa';
 
 function AdminPanel() {
   const [accessToken, setAccessToken] = useState(false);
@@ -198,23 +199,34 @@ function AdminPanel() {
     <>
       {!accessToken ? (
         <div className="loginpage">
-          <div className="loginbox">
-            <h2>Admin Login</h2>
-            <div className="userbox">
-              <input type="text" id="username" placeholder="username" required />
+          <div className="login-background"></div>
+          <div className="loginbox fade-in">
+            <h2>Welcome Back</h2>
+            <p className="subtitle">Please login to continue</p>
+
+            <div className="input-group">
+              <div className="icon">
+                <FaUser />
+              </div>
+              <input type="text" id="username" placeholder="Username" required />
             </div>
-            <div className="userbox">
+
+            <div className="input-group">
+              <div className="icon">
+                <FaLock />
+              </div>
               <input
                 type="password"
                 id="password"
-                placeholder="password"
+                placeholder="Password"
                 required
               />
             </div>
-            <button type="submit" onClick={submitLogin}>
-              Submit
+
+            <button type="submit" onClick={submitLogin} className="login-btn">
+              Login
             </button>
-            <p id="demo">Enter login credentials</p>
+            <p id="demo" className="message"></p>
           </div>
         </div>
       ) : (
