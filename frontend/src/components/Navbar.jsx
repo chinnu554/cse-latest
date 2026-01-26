@@ -54,9 +54,10 @@ function Navbar() {
               <p className="seperator" >─────────────────</p>
               <Link className="mob-link" onClick={()=>{setOpen(!open)}} to="/dept-facility">Dept Facilities</Link>
               <p className="seperator" >─────────────────</p>
-              <Link className="mob-link" onClick={()=>{setOpen(!open)}} to="/">2nd year materials</Link>
-              <Link className="mob-link" onClick={()=>{setOpen(!open)}} to="/">3rd year materials</Link>
-              <Link className="mob-link" onClick={()=>{setOpen(!open)}} to="/">4th year materials</Link>
+              <Link className="mob-link" onClick={()=>{setOpen(!open)}} to="/">Materials</Link>
+              <Link className="mob-link" onClick={()=>{setOpen(!open)}} to="/">Handwritten notes</Link>
+              <Link className="mob-link" onClick={()=>{setOpen(!open)}} to="/">PYQ's</Link>
+              <Link className="mob-link" onClick={()=>{setOpen(!open)}} to="/">Lab Manuals</Link>
               <p className="seperator" >─────────────────</p>
               <Link className="mob-link" onClick={()=>{setOpen(!open)}} to="/photo-gallery">Photo Gallery</Link>
               <Link className="mob-link" onClick={()=>{setOpen(!open)}} to="/">Placements</Link>
@@ -82,7 +83,7 @@ function Navbar() {
 
         <Link className="sep-links" to="/admin"><button className="link-btn">Admins</button></Link>
 
-        <Link className="sep-links" to="/academic"><button className="link-btn">Acadamics</button></Link>
+        <Link className="sep-links" to="/academic"><button className="link-btn">Academics</button></Link>
 
         <div className="dropdown">
           <button>People▾</button>
@@ -95,9 +96,9 @@ function Navbar() {
         <Link className="sep-links" to="/dept-facility"><button className="link-btn">Facilities</button></Link>
       
         <div className="dropdown">
-          <button>Materials▾</button>
+          <button>Resources▾</button>
           <div className="content">
-            <Link to="">2nd year</Link>
+            <Link to="">c</Link>
             <Link to="">3rd year</Link>
             <Link to="">4th year</Link>
           </div>
