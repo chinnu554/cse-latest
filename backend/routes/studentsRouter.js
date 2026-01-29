@@ -1,40 +1,39 @@
 import { getDatabase } from "../config/mongoConnect.js";
 import express from "express";
-const router =  express.Router();
-router.get("/secondyears",async(req,res)=>{
-    try{
+
+const router = express.Router();
+
+router.get("/secondyears", async (req, res, next) => {
+    try {
         const database = getDatabase();
         const secondYears = database.collection("secondYears");
         const data = await secondYears.find({}).toArray();
-        res.status(201).json(data)
+        res.status(200).json(data);
+    } catch (err) {
+        next(err);
     }
-    catch(err){
-        console.log(err);
-        res.status(500).json("Cant fetch the data of the students")
-    }
-})
-router.get("/thirdyears",async(req,res)=>{
-    try{
+});
+
+router.get("/thirdyears", async (req, res, next) => {
+    try {
         const database = getDatabase();
-        const secondYears = database.collection("thirdYears");
-        const data = await secondYears.find({}).toArray();
-        res.status(201).json(data)
+        const thirdYears = database.collection("thirdYears");
+        const data = await thirdYears.find({}).toArray();
+        res.status(200).json(data);
+    } catch (err) {
+        next(err);
     }
-    catch(err){
-        console.log(err);
-        res.status(500).json("Cant fetch the data of the students")
-    }
-})
-router.get("/fourthyears",async(req,res)=>{
-    try{
+});
+
+router.get("/fourthyears", async (req, res, next) => {
+    try {
         const database = getDatabase();
-        const secondYears = database.collection("fourthYears");
-        const data = await secondYears.find({}).toArray();
-        res.status(201).json(data)
+        const fourthYears = database.collection("fourthYears");
+        const data = await fourthYears.find({}).toArray();
+        res.status(200).json(data);
+    } catch (err) {
+        next(err);
     }
-    catch(err){
-        console.log(err);
-        res.status(500).json("Cant fetch the data of the students")
-    }
-})
+});
+
 export default router;

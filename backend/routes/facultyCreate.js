@@ -5,8 +5,7 @@ import { getDatabase } from "../config/mongoConnect.js";
 
 const router = express.Router();
 
-
-router.post("/uploadTeaching", uploadImage.single("image"), async (req, res) => {
+router.post("/uploadTeaching", uploadImage.single("image"), async (req, res, next) => {
   try {
     const database = getDatabase();
     const Teaching = database.collection("Teaching");
@@ -35,13 +34,12 @@ router.post("/uploadTeaching", uploadImage.single("image"), async (req, res) => 
       data: userData,
     });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false, message: error.message });
+    next(error);
   }
 });
 
 
-router.post("/uploadNonTeaching", uploadImage.single("image"), async (req, res) => {
+router.post("/uploadNonTeaching", uploadImage.single("image"), async (req, res, next) => {
   try {
     const database = getDatabase();
     const NonTeaching = database.collection("Non-Teaching");
@@ -71,8 +69,7 @@ router.post("/uploadNonTeaching", uploadImage.single("image"), async (req, res) 
       data: userData,
     });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false, message: error.message });
+    next(error);
   }
 });
 

@@ -1,0 +1,103 @@
+/* Global Responsive Overrides */
+
+/* Big Screens (4K monitors etc) */
+@media screen and (min-width: 1921px) {
+    #root {
+        max-width: 1600px;
+        margin: 0 auto;
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar,
+    .header,
+    .footer-content {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+}
+
+/* Laptops (Targeting commonly used laptop resolutions) */
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+    .home-page h1 {
+        font-size: 2rem;
+    }
+
+    .f-card {
+        min-width: 45%;
+    }
+}
+
+/* Foldable Mobiles (e.g. Galaxy Z Fold outer screen) */
+@media screen and (max-width: 350px) {
+    .navbar .marquee {
+        display: none;
+        /* Too small for marquee */
+    }
+
+    .header img.clg-logo,
+    .header img.branch-img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .header h1 {
+        font-size: 1.2rem;
+    }
+
+    .f-card {
+        min-width: 95%;
+        margin: 5px auto;
+    }
+
+    .f-img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .students-card {
+        width: 100%;
+    }
+
+    /* Adjust login box for Admin/Login pages */
+    .loginbox {
+        width: 95%;
+        padding: 20px 10px;
+    }
+}
+
+/* Smart Watches (Apple Watch, etc.) */
+@media screen and (max-width: 250px) {
+
+    .navbar,
+    .marquee,
+    .footer {
+        display: none;
+        /* Hide non-essentials */
+    }
+
+    body {
+        font-size: 12px;
+    }
+
+    h1,
+    h2,
+    h3 {
+        font-size: 14px;
+        margin: 5px;
+    }
+
+    .f-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 5px;
+    }
+
+    .f-img {
+        margin: 5px;
+    }
+
+    /* Ensure content is readable on tiny screens */
+    .home-page {
+        padding: 5px;
+    }
+}

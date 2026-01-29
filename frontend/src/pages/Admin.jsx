@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./Admin.css";
 import { FaUser, FaLock } from 'react-icons/fa';
+import SEO from "../components/SEO";
 
 function AdminPanel() {
   const [accessToken, setAccessToken] = useState(false);
@@ -197,6 +198,11 @@ function AdminPanel() {
 
   return (
     <>
+      <SEO
+        title="Admin Panel"
+        description="Secure admin access for managing department resources and data."
+        keywords="Admin, Login, Management, Dashboard"
+      />
       {!accessToken ? (
         <div className="loginpage">
           <div className="login-background"></div>

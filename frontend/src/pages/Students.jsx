@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import "./Students.css";
+import SEO from "../components/SEO";
 
 function Students() {
   const [secondYears, setSecondYear] = useState([]);
   const [thirdYears, setThirdYears] = useState([]);
   const [fourthYears, setFourthYears] = useState([]);
-  const [loading,setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
 
   useEffect(() => {
@@ -31,7 +32,7 @@ function Students() {
     fetchSecondYearStudents();
     fetchThirdYearStudents();
     fetchFourthYearStudents();
-    
+
   }, []);
 
   const filterStudents = (students) =>
@@ -51,114 +52,119 @@ function Students() {
     filteredThird.length === 0 &&
     filteredFourth.length === 0;
 
-  const observer = new IntersectionObserver((entries)=>{
-        entries.forEach((entry)=>{
-            if(entry.isIntersecting){
-                entry.target.classList.add("active");
-            }
-            else{
-                entry.target.classList.remove("active");
-            }
-        });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("active");
+      }
+      else {
+        entry.target.classList.remove("active");
+      }
     });
-    const hiddelements = document.querySelectorAll(".students-card");
-    hiddelements.forEach((el)=>observer.observe(el));
-    const hiddelements2 = document.querySelectorAll(".students h2");
-    hiddelements2.forEach((el)=>observer.observe(el));
+  });
+  const hiddelements = document.querySelectorAll(".students-card");
+  hiddelements.forEach((el) => observer.observe(el));
+  const hiddelements2 = document.querySelectorAll(".students h2");
+  hiddelements2.forEach((el) => observer.observe(el));
 
   return (
-      <>
+    <>
+      <SEO
+        title="Students"
+        description="List of bright minds and future engineers of GKCE CSE Department."
+        keywords="Students, Alumni, CSE, Engineering, GKCE"
+      />
       <div>
         {
-          (loading)?(
-           <div className="loading-container">
-          <div className="spinner"></div>
-             <p>Loading Students...</p>
-          </div>
-        )
-        :
-        (
-          <div className="students">
-      
-      <div className="student-heading">
-        <h1>Students</h1>
+          (loading) ? (
+            <div className="loading-container">
+              <div className="spinner"></div>
+              <p>Loading Students...</p>
+            </div>
+          )
+            :
+            (
+              <div className="students">
 
-      <input
-        type="text"
-        placeholder="Search by name / roll no / section..."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        className="search-input"
-      />
-      </div>
+                <div className="student-heading">
+                  <h1>Students</h1>
 
-      {noResults && (
-        <p style={{ textAlign: "center", marginTop: "20px", color: "gray" }}>
-          No student found
-        </p>
-      )}
-        <>
-          {
-            (!(filteredSecond.length === 0)) && (
-                <h2>Second Years</h2>
-            )
-          }
-          <div className="students-cards">
-            {filteredSecond.map((student, index) => (
-              <div key={index} className="students-card">
-                <h4>{student.name}</h4>
-                <div style={{ display: "flex", justifyContent: "space-between", marginTop: "-20px" }}>
-                  <p>{student.rollNo}</p>
-                  <p>{student.year} year</p>
-                  <p>Section-{student.section}</p>
+                  <input
+                    type="text"
+                    placeholder="Search by name / roll no / section..."
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    className="search-input"
+                  />
                 </div>
-              </div>
-            ))}
-          </div>
-          {
-            (!(filteredThird.length === 0)) && (
-                <h2>Third Years</h2>
-            )
-          }
-          
-          <div className="students-cards">
-            {filteredThird.map((student, index) => (
-              <div key={index} className="students-card">
-                <h4>{student.name}</h4>
-                <div style={{ display: "flex", justifyContent: "space-between", marginTop: "-20px" }}>
-                  <p>{student.rollNo}</p>
-                  <p>{student.year} year</p>
-                  <p>Section-{student.section}</p>
-                </div>
-              </div>
-            ))}
-          </div>
 
-         {
-            (!(filteredFourth.length === 0)) && (
-                <h2>Fourth Years</h2>
-            )
-          }
-          <div className="students-cards">
-            {filteredFourth.map((student, index) => (
-              <div key={index} className="students-card">
-                <h4>{student.name}</h4>
-                <div style={{ display: "flex", justifyContent: "space-between", marginTop: "-20px" }}>
-                  <p>{student.rollNo}</p>
-                  <p>{student.year} year</p>
-                  <p>Section-{student.section}</p>
-                </div>
+                {noResults && (
+                  <p style={{ textAlign: "center", marginTop: "20px", color: "gray" }}>
+                    No student found
+                  </p>
+                )}
+                <>
+                  {
+                    (!(filteredSecond.length === 0)) && (
+                      <h2>Second Years</h2>
+                    )
+                  }
+                  <div className="students-cards">
+                    {filteredSecond.map((student, index) => (
+                      <div key={index} className="students-card">
+                        <h4>{student.name}</h4>
+                        <div style={{ display: "flex", justifyContent: "space-between", marginTop: "-20px" }}>
+                          <p>{student.rollNo}</p>
+                          <p>{student.year} year</p>
+                          <p>Section-{student.section}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  {
+                    (!(filteredThird.length === 0)) && (
+                      <h2>Third Years</h2>
+                    )
+                  }
+
+                  <div className="students-cards">
+                    {filteredThird.map((student, index) => (
+                      <div key={index} className="students-card">
+                        <h4>{student.name}</h4>
+                        <div style={{ display: "flex", justifyContent: "space-between", marginTop: "-20px" }}>
+                          <p>{student.rollNo}</p>
+                          <p>{student.year} year</p>
+                          <p>Section-{student.section}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {
+                    (!(filteredFourth.length === 0)) && (
+                      <h2>Fourth Years</h2>
+                    )
+                  }
+                  <div className="students-cards">
+                    {filteredFourth.map((student, index) => (
+                      <div key={index} className="students-card">
+                        <h4>{student.name}</h4>
+                        <div style={{ display: "flex", justifyContent: "space-between", marginTop: "-20px" }}>
+                          <p>{student.rollNo}</p>
+                          <p>{student.year} year</p>
+                          <p>Section-{student.section}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </>
+
               </div>
-            ))}
-          </div>
-        </>
-      
-    </div>
-        )
+            )
         }
-        
+
       </div>
-      </>
+    </>
   );
 }
 

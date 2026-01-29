@@ -252,7 +252,7 @@
 
   .vision,
   .mission {
-    width: fit-content;
+    width: 100%;
     height: auto;
     background-attachment: scroll;
   }
@@ -271,6 +271,10 @@
     width: 100%;
     list-style: none;
     font-size: 16px;
+  }
+
+  .mission ul {
+    margin-left: 20px;
   }
 }
 

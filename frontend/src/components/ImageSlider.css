@@ -56,7 +56,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 999999999999;
+    z-index: 999999999999 !important;
 }
 
 .viewer-img {
@@ -93,6 +93,7 @@
     user-select: none;
     transform: translateY(-50%);
     padding: 10px;
+    background-color: transparent;
 }
 
 .nav.left {

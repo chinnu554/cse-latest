@@ -4,6 +4,7 @@ import SwiperImg from '../components/ImageSlider.jsx'
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import { useState, useEffect } from 'react';
+import SEO from '../components/SEO';
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -28,6 +29,11 @@ function Home() {
 
     return (
         <>
+            <SEO
+                title="Home"
+                description="Welcome to the Computer Science Department of Gokula Krishna College of Engineering."
+                keywords="Home, CSE, Engineering, GKCE, Sullurpet"
+            />
             <div className="home-page">
                 <div>
                     <div className="showcase">
