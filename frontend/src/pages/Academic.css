@@ -84,7 +84,7 @@ ul {
 
     .academic-h1 {
         margin: 15px 10px;
-        font-size: 22px;
+        font-size: 1.6rem;
     }
     .content ul li{
         margin-left: 10px;
@@ -93,7 +93,7 @@ ul {
 
 @media (max-width: 480px) {
     .academic-h1 {
-        font-size: 20px;
+        font-size: 1.5rem;
     }
 
     li {

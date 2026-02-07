@@ -12,7 +12,13 @@
 
 .f-card:hover {
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.578);
-    background-color: white;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(12px);
+    color: black;
+}
+
+.f-card:hover .f-img {
+    border-radius: 50%;
 }
 
 .f-img {
@@ -28,7 +34,6 @@
 .f-img:hover {
     border-radius: 50%;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.135);
-
 }
 
 @media screen and (max-width:768px) {

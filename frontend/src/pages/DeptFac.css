@@ -12,7 +12,6 @@
 
 .section-container {
     max-width: 1400px;
-    margin: 40px auto;
     padding: 20px;
 }
 
@@ -79,95 +78,6 @@
     font-weight: 600;
 }
 
-/* Viewer Styles */
-.viewer {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.95);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 100000;
-    backdrop-filter: blur(5px);
-}
-
-.viewer-img {
-    max-width: 90vw;
-    max-height: 85vh;
-    border-radius: 4px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    animation: zoomIn 0.3s ease;
-}
-
-.close {
-    position: absolute;
-    top: 25px;
-    right: 35px;
-    font-size: 40px;
-    color: #fff;
-    cursor: pointer;
-    background: rgba(255, 255, 255, 0.1);
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: background 0.3s;
-}
-
-.close:hover {
-    background: rgba(255, 255, 255, 0.3);
-}
-
-.nav {
-    position: absolute;
-    top: 50%;
-    font-size: 30px;
-    color: white;
-    cursor: pointer;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 15px;
-    border-radius: 50%;
-    transform: translateY(-50%);
-    transition: all 0.3s ease;
-    user-select: none;
-}
-
-.nav:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: translateY(-50%) scale(1.1);
-}
-
-.nav.left {
-    left: 40px;
-}
-
-.nav.right {
-    right: 40px;
-}
-
-.count {
-    position: absolute;
-    top: 30px;
-    left: 40px;
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 18px;
-    font-family: monospace;
-}
-
-@keyframes zoomIn {
-    from {
-        transform: scale(0.9);
-        opacity: 0;
-    }
-
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
 /* Responsive */
 @media (max-width: 1024px) {
     .facility-card {
@@ -193,25 +103,27 @@
     .img-wrapper {
         height: 200px;
     }
-
-    .nav {
-        padding: 10px;
-        font-size: 20px;
+}
+@media (max-width:384px){
+    .page-title {
+        font-size: 1.5rem;
+        margin: 15px;
     }
 
-    .nav.left {
-        left: 10px;
+    .facility-card {
+        width: 100%;
+        margin: 0 10px;
     }
 
-    .nav.right {
-        right: 10px;
+    .section-title {
+        margin-left: 10px;
+        font-size: 1.3rem;
     }
 
-    .close {
-        right: 15px;
-        top: 15px;
-        width: 40px;
-        height: 40px;
-        font-size: 30px;
+    .img-wrapper {
+        height: 150px;
+    }
+    .card-content h3 {
+        font-size: 1rem;
     }
 }

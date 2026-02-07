@@ -1,6 +1,7 @@
 import './Footer.css';
 import { FaInstagram, FaFacebook, FaYoutube } from "react-icons/fa"
 import{useState,useEffect} from 'react';
+import { Link } from 'react-router-dom';
 function Footer() {
     const year = new Date().getFullYear();
     useEffect(()=>{
@@ -43,7 +44,8 @@ function Footer() {
              <h3>Contact Us</h3>
              <p>Behind RTC Depot., Sullurpet,</p>
              <p>Tirupati District, Andhra Pradesh-524121</p>
-             <p><a href="mailto:suresh@gkce.edu.in">suresh@gkce.edu.in</a></p>
+             <p><a href="mailto:c">suresh@gkce.edu.in</a></p>
+
         </div>
 
         <div className='footer-section links'>
@@ -52,7 +54,8 @@ function Footer() {
                 <li><a href="https://gkce.edu.in/" target='_blank'>Gokula Krishna IOE</a></li>
                 <li><a href="https://swayam.gov.in/" target='_blank'>Swayam</a></li>
                 <li><a href="https://ndl.iitkgp.ac.in/" target='_blank'>National Digital Library</a></li>
-                <li><a href="https://nad.gov.in/" target='_blank'>National Academic Depository</a></li>
+                <li><a href="https://www.nptel.ac.in/" target='_blank'>NPTEL</a></li>
+                <li><Link to="admin">Admin panel</Link></li>
             </ul>
         </div>
 

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ImageViewer from "react-simple-image-viewer";
 import labOne from "../../images/lab-images/lab1.png";
 import labTwo from "../../images/lab-images/lab2.png";
 import labThree from "../../images/lab-images/lab3.png";
@@ -24,17 +25,12 @@ function DeptFac() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const openViewer = (index) => {
+    if (window.innerWidth <= 768) return;
     setCurrentIndex(index);
     setIsOpen(true);
   };
 
   const closeViewer = () => setIsOpen(false);
-
-  const prevImage = () =>
-    setCurrentIndex((prev) => (prev === 0 ? allImages.length - 1 : prev - 1));
-
-  const nextImage = () =>
-    setCurrentIndex((prev) => (prev === allImages.length - 1 ? 0 : prev + 1));
 
   return (
     <>
@@ -87,18 +83,13 @@ function DeptFac() {
         </div>
 
         {isOpen && (
-          <div className="viewer" onClick={closeViewer}>
-            <span className="close" onClick={closeViewer}>✕</span>
-            <span className="count">{currentIndex + 1} / {allImages.length}</span>
-            <span className="nav left" onClick={(e) => { e.stopPropagation(); prevImage(); }}>❮</span>
-            <img
-              src={allImages[currentIndex].src}
-              alt={allImages[currentIndex].label}
-              className="viewer-img"
-              onClick={(e) => e.stopPropagation()}
-            />
-            <span className="nav right" onClick={(e) => { e.stopPropagation(); nextImage(); }}>❯</span>
-          </div>
+          <ImageViewer
+            src={allImages.map((img) => img.src)}
+            currentIndex={currentIndex}
+            disableScroll={false}
+            closeOnClickOutside={true}
+            onClose={closeViewer}
+          />
         )}
       </div>
     </>

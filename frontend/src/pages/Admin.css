@@ -3,7 +3,7 @@
 
 .loginpage {
     /* Dynamic background */
-    background: linear-gradient(135deg, #0000005a 0%, #0000005c 100%), url("../assets/loginpage.png");
+    background: linear-gradient(135deg, #0000005a 0%, #0000005c 100%), url("../assets/login.png");
     background-blend-mode: overlay;
     background-size: cover;
     background-position: center;
@@ -16,7 +16,6 @@
     overflow: hidden;
 }
 
-/* Background floating shapes */
 .loginpage::before {
     content: '';
     position: absolute;
@@ -89,9 +88,6 @@
     font-size: 2rem;
     font-weight: 600;
     letter-spacing: 1px;
-    background: -webkit-linear-gradient(45deg, #fff, #a2c2e1);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 
 .subtitle {
@@ -175,5 +171,11 @@
 
     .loginbox h2 {
         font-size: 1.5rem;
+    }
+}
+
+@media (max-width:768px){
+    .loginbox {
+        width: 330px;
     }
 }

@@ -1,5 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import ImageViewer from "react-simple-image-viewer";
 import { useState, useEffect } from "react";
 
 import "swiper/css";
@@ -30,17 +31,12 @@ function ImageSlider() {
   }, []);
 
   const openViewer = (realIndex) => {
+    if (window.innerWidth <= 768) return;
     setCurrentIndex(realIndex);
     setIsOpen(true);
   };
 
   const closeViewer = () => setIsOpen(false);
-
-  const prevImage = () =>
-    setCurrentIndex((prev) => (prev === 0 ? imgs.length - 1 : prev - 1));
-
-  const nextImage = () =>
-    setCurrentIndex((prev) => (prev === imgs.length - 1 ? 0 : prev + 1));
 
   if (loading) {
     return (
@@ -62,7 +58,6 @@ function ImageSlider() {
           pagination={{ clickable: true }}
           navigation
           onSlideChange={(swiper) => {
-            // keeps viewer index correct if needed later
             setCurrentIndex(swiper.realIndex);
           }}
         >
@@ -83,23 +78,13 @@ function ImageSlider() {
       </div>
 
       {isOpen && (
-        <div className="viewer">
-          <span className="close" onClick={closeViewer}>✕</span>
-
-          <span className="count">
-            {currentIndex + 1} / {imgs.length}
-          </span>
-
-          <span className="nav left" onClick={prevImage}>❮</span>
-
-          <img
-            src={imgs[currentIndex]}
-            alt="full"
-            className="viewer-img"
-          />
-
-          <span className="nav right" onClick={nextImage}>❯</span>
-        </div>
+        <ImageViewer
+          src={imgs}
+          currentIndex={currentIndex}
+          disableScroll={false}
+          closeOnClickOutside={true}
+          onClose={closeViewer}
+        />
       )}
     </>
   );

@@ -11,20 +11,20 @@ function Students() {
 
   useEffect(() => {
     async function fetchSecondYearStudents() {
-      const response = await fetch("http://localhost:5000/secondyears");
+      const response = await fetch("http://localhost:5000/students/secondyears");
       const data = await response.json();
       setSecondYear(data);
       setLoading(false);
     }
 
     async function fetchThirdYearStudents() {
-      const response = await fetch("http://localhost:5000/thirdyears");
+      const response = await fetch("http://localhost:5000/students/thirdyears");
       const data = await response.json();
       setThirdYears(data);
     }
 
     async function fetchFourthYearStudents() {
-      const response = await fetch("http://localhost:5000/fourthyears");
+      const response = await fetch("http://localhost:5000/students/fourthyears");
       const data = await response.json();
       setFourthYears(data);
     }

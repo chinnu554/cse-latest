@@ -12,6 +12,10 @@ import DeptFac from './pages/DeptFac.jsx';
 import { Routes, Route } from "react-router-dom"
 import ScrollToTopButton from './components/ScrollButton/scrollButton.jsx';
 import Photo from './pages/Photo.jsx';
+import Material from './Resources/Material.jsx';
+import Syllabus from './Resources/Syllabus.jsx';
+import Pyq from './Resources/Pyq.jsx';
+import LabManual from './Resources/LabManual.jsx';
 function App() {
 
   useEffect(() => {
@@ -30,6 +34,10 @@ function App() {
         <Route path='/dept-facility' element={<DeptFac />} />
         <Route path='/academic' element={<Academic />} />
         <Route path='/Photo-gallery' element={<Photo />} />
+        <Route path='/resources/materials' element={<Material />} />
+        <Route path='/resources/syllabus' element={<Syllabus />} />
+        <Route path='/resources/pyq' element={<Pyq />} />
+        <Route path='/resources/lab-manuals' element={<LabManual />} />
       </Routes>
       <ScrollToTopButton></ScrollToTopButton>
       <Footer />

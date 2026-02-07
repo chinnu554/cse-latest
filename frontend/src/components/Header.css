@@ -4,6 +4,8 @@
 }
 .header{
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     gap: 10px;
     box-shadow: 3px 3px 3px   rgba(0, 0, 0, 0.123);
     background:  rgb(255, 255, 255);
@@ -12,12 +14,22 @@
 h3{
     margin-top: -15px;
 }
+.contact-info{
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+    font-size: 14px;
+    gap: 10px;
+}
+.contact-info a{
+    text-decoration: none;
+    color: black;
+}
 @media screen and (max-width:768px){
     img{
         width:70px;
         height: 70px;
-        margin-top: 10px ;
-
+        margin-top: 10px;
     }
     .branch-img{
         width: 90px;
@@ -28,5 +40,8 @@ h3{
     }
     h1{
         font-size: 25px;
+    }
+    .contact-info{
+        display: none;
     }
 }

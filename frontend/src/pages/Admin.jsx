@@ -34,7 +34,7 @@ function AdminPanel() {
       const username = document.getElementById("username").value;
       const password = document.getElementById("password").value;
 
-      const result = await fetch("http://localhost:5000/login", {
+      const result = await fetch("http://localhost:5000/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
@@ -105,7 +105,7 @@ function AdminPanel() {
       formData.append("fileType", fileType);
       formData.append("unit", unit);
 
-      const res = await fetch("http://localhost:5000/materials/upload-pdf", {
+      const res = await fetch("http://localhost:5000/resources/upload-resources", {
         method: "POST",
         body: formData,
       });

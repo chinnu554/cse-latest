@@ -1,5 +1,5 @@
 import express from "express";
-import fs from "fs";
+import fs from "fs/promises";
 import path from "path";
 
 const router = express.Router();
@@ -13,7 +13,7 @@ router.get("/materials", async (req, res) => {
       .filter(file => file.endsWith(".pdf"))
       .map(file => ({
         name: file,
-        url: `/materials/download/${encodeURIComponent(file)}`
+        url: `/resources/materials/download/${encodeURIComponent(file)}`
       }));
       console.log(pdfs)
     res.json(pdfs);
@@ -26,9 +26,6 @@ router.get("/materials/download/:filename", (req, res) => {
   const filename = req.params.filename;
   const filePath = path.join(MATERIALS_DIR, filename);
 
-  if (!fs.existsSync(filePath)) {
-    return res.status(404).json({ error: "File not found" });
-  }
 
   res.download(filePath);
 });

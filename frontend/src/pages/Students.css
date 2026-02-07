@@ -1,4 +1,4 @@
-.students-card{
+.students-card {
     margin: 5px;
     width: 250px;
     max-height: 100px;
@@ -9,19 +9,20 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     opacity: 0;
     transform: translateY(-20px) scale(0.8);
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    transition: all 0.3s ease-in-out;
 }
 
-.students-card:hover{
+.students-card:hover {
     transform: translateY(-6px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
-.students-card.active{
+
+.students-card.active {
     opacity: 1;
     transform: translateY(0) scale(1);
 }
 
-.students-cards{
+.students-cards {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -43,7 +44,7 @@
     border-color: #4f46e5;
 }
 
-.student-heading{
+.student-heading {
     display: flex;
     gap: 30px;
     flex-direction: row;
@@ -52,19 +53,20 @@
 
 }
 
-.students h1{
+.students h1 {
     margin: 30px 25px;
-  border-left: 4px solid #21485e;
-  color: #21485e;
-  padding-left: 10px;
+    border-left: 4px solid #21485e;
+    color: #21485e;
+    padding-left: 10px;
 }
 
-.students h2{
+.students h2 {
     margin-left: 65px;
     opacity: 0;
     transform: translateY(-10px);
     transition: all 0.8s ease-out;
 }
+
 .students h2.active {
     opacity: 1;
     transform: translateY(0);
@@ -89,8 +91,13 @@
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 @media (max-width: 1024px) {

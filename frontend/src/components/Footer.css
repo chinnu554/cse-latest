@@ -120,8 +120,8 @@ footer {
 }
 
 .devsparks {
-  color: #4da6ff !important;
-  font-weight: bold;
+  color: #ffffff !important;
+  text-decoration: none;
 }
 
 .devsparks:hover {

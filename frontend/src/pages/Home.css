@@ -156,17 +156,32 @@
 }
 
 .mission ul {
-  margin-left: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+  margin-left: 35px;
 }
 
 .mission ul li {
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  margin: 10px;
   font-size: 20px;
   color: #c7c7c7;
-  max-width: 80%;
+  max-width: 90%;
   padding: 20px;
   opacity: 0;
   transform: translateX(-20px);
   transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  list-style: none;
+  text-align: left;
+  border-left: 4px solid #6ecff6;
+}
+
+.mission ul li:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .mission ul li.active {
@@ -228,6 +243,7 @@
 @media (max-width: 768px) {
   .showcase {
     background-attachment: scroll;
+    height: 80vh;
   }
 
   .hod-details {
@@ -253,29 +269,25 @@
   .vision,
   .mission {
     width: 100%;
-    height: auto;
+    height: 80vh;
     background-attachment: scroll;
   }
 
   .vision p {
     max-width: 90%;
     font-size: 16px;
-    /* Increased from 10px */
     font-weight: 500;
   }
 
   .mission ul li {
     padding: 10px;
     text-align: left;
-    /* Better readability */
     width: 100%;
     list-style: none;
     font-size: 16px;
+    margin-left: 0;
   }
 
-  .mission ul {
-    margin-left: 20px;
-  }
 }
 
 @media (max-width: 576px) {
@@ -285,8 +297,8 @@
   }
 
   .hod-img {
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
     margin-bottom: 0;
   }
 
@@ -315,5 +327,40 @@
 
   .mission ul li {
     font-size: 16px;
+  }
+}
+@media (max-width: 400px) {
+  .home-page h1 {
+    font-size: 20px;
+    margin: 15px 10px;
+  }
+
+  .hod-img {
+    width: 100%;
+    height: auto;
+  }
+
+  .hod-text ul li {
+    display: none;
+  }
+
+  .vision h1,
+  .mission h1 {
+    font-size: 24px;
+    margin-bottom: -10px;
+    padding-top: 10px;
+  }
+
+  .vision p {
+    font-size: 16px;
+  }
+
+  .mission ul {
+    margin: 10px;
+  }
+
+  .mission ul li {
+    font-size: 14px;
+    padding: 8px;
   }
 }
