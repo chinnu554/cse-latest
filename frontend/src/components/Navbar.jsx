@@ -55,7 +55,7 @@ function Navbar() {
                     <p className="seperator" >─────────────────</p>
                     <Link className="mob-link" onClick={() => { setOpen(!open) }} to="/resources/materials">Materials</Link>
                     <Link className="mob-link" onClick={() => { setOpen(!open) }} to="/resources/syllabus">Syllabus</Link>
-                    <Link className="mob-link" onClick={() => { setOpen(!open) }} to="/resources/pyq">PYQ's</Link>
+                    <Link className="mob-link" onClick={() => { setOpen(!open) }} to="/resources/pyqs">PYQ's</Link>
                     <Link className="mob-link" onClick={() => { setOpen(!open) }} to="/resources/lab-manuals">Lab Manuals</Link>
                     <p className="seperator" >─────────────────</p>
                     <Link className="mob-link" onClick={() => { setOpen(!open) }} to="/photo-gallery">Photo Gallery</Link>
@@ -97,7 +97,7 @@ function Navbar() {
                   <div className="content">
                     <Link to="/resources/materials">Materials</Link>
                     <Link to="/resources/syllabus">Syllabus</Link>
-                    <Link to="/resources/pyq">PYQ'S</Link>
+                    <Link to="/resources/pyqs">PYQ'S</Link>
                     <Link to="/resources/lab-manuals">Lab Manual</Link>
                   </div>
                 </div>

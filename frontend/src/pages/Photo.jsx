@@ -25,7 +25,7 @@ function Photo() {
   useEffect(() => {
     async function fetchPhoto() {
       try {
-        const response = await fetch("http://localhost:5000/photo-gallery");
+        const response = await fetch("https://backend.devsparks.online/images/photo-gallery");
         const images = await response.json();
         setPhotos(images);
       } catch (err) {
@@ -49,10 +49,12 @@ function Photo() {
   return (
     <>
       <SEO
-        title="Photo Gallery"
-        description="Explore the vibrant campus life, events, and facilities of GKCE CSE Department."
-        keywords="Gallery, Photos, Campus Life, Events, GKCE CSE"
+        title="GKCE CSE Photo Gallery | Campus & Events"
+        description="Explore photos of campus life, technical events, workshops, seminars, and facilities of the CSE Department at Gokula Krishna College of Engineering (GKCE)."
+        keywords="GKCE CSE gallery, GKCE campus photos, CSE department events GKCE, GKCE workshops photos, engineering college gallery GKCE"
+        canonicalUrl="https://gkce-cse.in/gallery"
       />
+
 
       <div className="photo-page-container">
         <div className="photo-header">
@@ -95,7 +97,8 @@ function Photo() {
             disableScroll={true}
             closeOnClickOutside={true}
             backgroundStyle={{
-              backgroundColor: "rgba(0,0,0,0.9)"
+              backgroundColor: "rgba(0,0,0,0.9)",
+              zIndex: 10000
             }}
           />
         )}

@@ -72,35 +72,9 @@
     transform: translateY(0);
 }
 
-.loading-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 50vh;
-}
 
-.spinner {
-    width: 50px;
-    height: 50px;
-    border: 5px solid #ccc;
-    border-top: 5px solid #000000;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin-bottom: 10px;
-}
 
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-@media (max-width: 1024px) {
+@media screen and (max-width: 1024px) {
     .students-card {
         width: 220px;
     }
@@ -116,7 +90,7 @@
     }
 }
 
-@media (max-width: 768px) {
+@media screen and  (max-width: 768px) {
     .students-cards {
         justify-content: center;
     }
@@ -127,9 +101,8 @@
     }
 
     .student-heading {
-        flex-direction: column;
-        gap: 10px;
         margin: 10px;
+        gap: 1px;
     }
 
     .search-input {
@@ -140,12 +113,13 @@
     .students h1,
     .students h2 {
         margin-left: 15px;
+        font-size: 18px;
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 425px) {
     .students-card {
-        width: 100%;
+        width: 80%;
         max-width: 320px;
         padding: 12px;
     }
@@ -158,10 +132,67 @@
     .student-heading {
         gap: 8px;
     }
-
-    .students h1,
+    .students h1 {
+        margin-left: 10px;
+        font-size: 25px;
+    }
     .students h2 {
         margin-left: 10px;
         font-size: 18px;
+    }
+
+}
+@media screen and (max-width: 320px) {
+    .students-card {
+        width: 70%;
+        max-width: 300px;
+        padding: 10px;
+    }
+
+    .search-input {
+        width: 100%;
+        font-size: 10px;
+    }
+
+    .student-heading {
+        gap: 3px;
+    }
+    .students h1 {
+        margin-left: 10px;
+        font-size: 22px;
+    }
+    .students h2 {
+        margin-left: 10px;
+        font-size: 16px;
+    }
+    .students-cards p{
+        font-size: 10px;
+    }
+}
+@media screen and (max-width: 375px) {
+    .students-card {
+        width: 60%;
+        max-width: 280px;
+        padding: 8px;
+    }
+
+    .search-input {
+        width: 100%;
+        font-size: 8px;
+    }
+
+    .student-heading {
+        gap: 2px;
+    }
+    .students h1 {
+        margin-left: 10px;
+        font-size: 20px;
+    }
+    .students h2 {
+        margin-left: 10px;
+        font-size: 14px;
+    }
+    .students-cards p{
+        font-size: 8px;
     }
 }

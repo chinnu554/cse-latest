@@ -41,7 +41,7 @@ function PDFUpload() {
       data.append("subject", subject);
       data.append("unit", unit);
 
-      const response = await fetch("http://localhost:5000/upload-pdf", {
+      const response = await fetch("https://backend.devsparks.online/resources/upload-resources", {
         method: "POST",
         body: data,
       });

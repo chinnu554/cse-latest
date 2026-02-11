@@ -1,44 +1,56 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense, lazy } from 'react';
 import './Responsive.css';
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
 import Navbar from './components/Navbar.jsx'
-import Home from './pages/Home.jsx'
-import Faculty from "./pages/Faculty.jsx";
-import Students from './pages/Students.jsx';
-import Admin from './pages/Admin.jsx';
-import Academic from './pages/Academic.jsx';
-import DeptFac from './pages/DeptFac.jsx';
-import { Routes, Route } from "react-router-dom"
+import { Routes, Route, useLocation } from "react-router-dom"
 import ScrollToTopButton from './components/ScrollButton/scrollButton.jsx';
-import Photo from './pages/Photo.jsx';
-import Material from './Resources/Material.jsx';
-import Syllabus from './Resources/Syllabus.jsx';
-import Pyq from './Resources/Pyq.jsx';
-import LabManual from './Resources/LabManual.jsx';
+
+const Home = lazy(() => import('./pages/Home.jsx'));
+const Faculty = lazy(() => import('./pages/Faculty.jsx'));
+const Students = lazy(() => import('./pages/Students.jsx'));
+const Admin = lazy(() => import('./pages/Admin.jsx'));
+const Academic = lazy(() => import('./pages/Academic.jsx'));
+const DeptFac = lazy(() => import('./pages/DeptFac.jsx'));
+const Photo = lazy(() => import('./pages/Photo.jsx'));
+const Materials = lazy(() => import('./pages/Materials.jsx'));
+const Syllabus = lazy(() => import('./pages/Syllabus.jsx'));
+const PYQs = lazy(() => import('./pages/PYQs.jsx'));
+const LabManuals = lazy(() => import('./pages/LabManuals.jsx'));
+
+import Loading from './components/Loading';
+
 function App() {
 
+  const { pathname } = useLocation();
+
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [])
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  }, [pathname]);
 
   return (
     <>
       <Header />
       <Navbar />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/faculty' element={<Faculty />} />
-        <Route path='/students' element={<Students />} />
-        <Route path='/admin' element={<Admin />} />
-        <Route path='/dept-facility' element={<DeptFac />} />
-        <Route path='/academic' element={<Academic />} />
-        <Route path='/Photo-gallery' element={<Photo />} />
-        <Route path='/resources/materials' element={<Material />} />
-        <Route path='/resources/syllabus' element={<Syllabus />} />
-        <Route path='/resources/pyq' element={<Pyq />} />
-        <Route path='/resources/lab-manuals' element={<LabManual />} />
-      </Routes>
+      <Suspense fallback={<Loading minHeight="100vh" />}>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/faculty' element={<Faculty />} />
+          <Route path='/students' element={<Students />} />
+          <Route path='/admin' element={<Admin />} />
+          <Route path='/dept-facility' element={<DeptFac />} />
+          <Route path='/academic' element={<Academic />} />
+          <Route path='/Photo-gallery' element={<Photo />} />
+          <Route path='/resources/materials' element={<Materials />} />
+          <Route path='/resources/syllabus' element={<Syllabus />} />
+          <Route path='/resources/pyqs' element={<PYQs />} />
+          <Route path='/resources/lab-manuals' element={<LabManuals />} />
+        </Routes>
+      </Suspense>
       <ScrollToTopButton></ScrollToTopButton>
       <Footer />
     </>

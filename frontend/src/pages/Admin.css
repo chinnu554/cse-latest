@@ -1,9 +1,7 @@
-/* Admin.css - Premium Glassmorphism Design */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
 .loginpage {
-    /* Dynamic background */
-    background: linear-gradient(135deg, #0000005a 0%, #0000005c 100%), url("../assets/login.png");
+    background: linear-gradient(135deg, #0000005a 0%, #0000005c 100%), url("/images/login.webp");
     background-blend-mode: overlay;
     background-size: cover;
     background-position: center;
@@ -174,7 +172,7 @@
     }
 }
 
-@media (max-width:768px){
+@media (max-width:768px) {
     .loginbox {
         width: 330px;
     }

@@ -2,6 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import ImageViewer from "react-simple-image-viewer";
 import { useState, useEffect } from "react";
+import Loading from "./Loading";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -18,7 +19,7 @@ function ImageSlider() {
   useEffect(() => {
     async function fetchSliderImages() {
       try {
-        const res = await fetch("http://localhost:5000/slider-images");
+        const res = await fetch("https://backend.devsparks.online/images/slider-images");
         const data = await res.json();
         setImgs(data.data || data);
         setLoading(false);
@@ -39,12 +40,7 @@ function ImageSlider() {
   const closeViewer = () => setIsOpen(false);
 
   if (loading) {
-    return (
-      <div className="loading-container">
-        <div className="spinner"></div>
-        <p>Loading faculty...</p>
-      </div>
-    );
+    return <Loading message="Loading images..." minHeight="50vh" />;
   }
 
   return (
@@ -63,15 +59,21 @@ function ImageSlider() {
         >
           {imgs.map((img, index) => (
             <SwiperSlide key={index}>
-              <img
-                className="slide-img"
-                src={img}
-                alt="slider"
-                onClick={(e) => {
-                  const swiper = e.target.closest(".swiper")?.swiper;
-                  openViewer(swiper.realIndex);
-                }}
-              />
+              <div className="slide-img-container" style={{ aspectRatio: '16/9', width: '100%', overflow: 'hidden' }}>
+                <img
+                  className="slide-img"
+                  src={img}
+                  alt="slider"
+                  loading={index === 0 ? "eager" : "lazy"}
+                  width="100%"
+                  height="100%"
+                  style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                  onClick={(e) => {
+                    const swiper = e.target.closest(".swiper")?.swiper;
+                    openViewer(swiper.realIndex);
+                  }}
+                />
+              </div>
             </SwiperSlide>
           ))}
         </Swiper>
@@ -84,7 +86,12 @@ function ImageSlider() {
           disableScroll={false}
           closeOnClickOutside={true}
           onClose={closeViewer}
+          className="image-viewer"
+          backgroundStyle={{
+            zIndex: 10000
+          }}
         />
+
       )}
     </>
   );

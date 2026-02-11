@@ -34,7 +34,7 @@ function AdminPanel() {
       const username = document.getElementById("username").value;
       const password = document.getElementById("password").value;
 
-      const result = await fetch("http://localhost:5000/auth/login", {
+      const result = await fetch("https://backend.devsparks.online/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
@@ -65,7 +65,7 @@ function AdminPanel() {
 
     try {
       const res = await fetch(
-        "http://localhost:5000/facultycreate/uploadTeaching",
+        "https://backend.devsparks.online/facultycreate/uploadTeaching",
         { method: "POST", body: formData }
       );
 
@@ -105,7 +105,7 @@ function AdminPanel() {
       formData.append("fileType", fileType);
       formData.append("unit", unit);
 
-      const res = await fetch("http://localhost:5000/resources/upload-resources", {
+      const res = await fetch("https://backend.devsparks.online/resources/upload-resources", {
         method: "POST",
         body: formData,
       });
@@ -143,7 +143,7 @@ function AdminPanel() {
     formData.append("image", sliderImage);
 
     try {
-      const res = await fetch("http://localhost:5000/upload-slider", {
+      const res = await fetch("https://backend.devsparks.online/images/upload-slider", {
         method: "POST",
         body: formData,
       });
@@ -175,7 +175,7 @@ function AdminPanel() {
     formData.append("image", galleryImage);
 
     try {
-      const res = await fetch("http://localhost:5000/upload-gallery", {
+      const res = await fetch("https://backend.devsparks.online/images/upload-gallery", {
         method: "POST",
         body: formData,
       });
@@ -202,6 +202,7 @@ function AdminPanel() {
         title="Admin Panel"
         description="Secure admin access for managing department resources and data."
         keywords="Admin, Login, Management, Dashboard"
+        canonicalUrl={window.location.href}
       />
       {!accessToken ? (
         <div className="loginpage">

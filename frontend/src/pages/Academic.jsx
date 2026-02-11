@@ -5,10 +5,12 @@ function Academic() {
     return (
         <>
             <SEO
-                title="Academic"
-                description="Overview of the Computer Science and Engineering Department, programs offered, infrastructure, and research areas."
-                keywords="Academic, CSE Department, B.Tech, M.Tech, Artificial Intelligence, Data Science"
+                title="CSE Academics | GKCE CSE Department Sullurpet"
+                description="Explore the academic programs, curriculum structure, research areas, and infrastructure of the Computer Science and Engineering (CSE) Department at Gokula Krishna College of Engineering, Sullurpet."
+                keywords="GKCE CSE academics, GKCE B.Tech CSE, CSE department GKCE Sullurpet, GKCE CSE programs, CSE curriculum GKCE, Artificial Intelligence GKCE, Data Science GKCE"
+                canonicalUrl="https://gkce-cse.in/academic"
             />
+
 
             <div>
                 <h1 className="academic-h1">About the Department</h1>

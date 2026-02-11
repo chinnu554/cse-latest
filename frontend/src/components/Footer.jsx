@@ -73,7 +73,7 @@ function Footer() {
 
       <div className='footer-bottom'>
         <p>© {year} Gokula Krishna College of Engineering. All Rights Reserved.</p>
-        <p>Designed and maintained by <a className='devsparks' href="https://eswar.devsparks.online/" target='_blank'><b>Dev Sparks</b></a></p>
+        <p>Designed and maintained by <a className='devsparks' href="https://eswar.devsparks.online/" target='_blank'><b>ESWAR GKCE</b></a></p>
       </div>
     </footer>
     </>

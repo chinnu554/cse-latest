@@ -7,7 +7,6 @@
     border-left: 4px solid #21485e;
     color: #21485e;
     padding-left: 10px;
-    font-size: 2.5rem;
 }
 
 .section-container {
@@ -17,12 +16,13 @@
 
 .section-title {
     text-align: left;
-    margin-bottom: 30px;
     color: #444;
     font-size: 1.8rem;
     border-bottom: 2px solid #6ecff6;
     display: inline-block;
     padding-bottom: 5px;
+    margin-bottom: 30px;
+    margin-left: 25px;
 }
 
 .facilities-grid {
@@ -78,7 +78,6 @@
     font-weight: 600;
 }
 
-/* Responsive */
 @media (max-width: 1024px) {
     .facility-card {
         width: 45%;
@@ -104,7 +103,8 @@
         height: 200px;
     }
 }
-@media (max-width:384px){
+
+@media (max-width:384px) {
     .page-title {
         font-size: 1.5rem;
         margin: 15px;
@@ -123,6 +123,7 @@
     .img-wrapper {
         height: 150px;
     }
+
     .card-content h3 {
         font-size: 1rem;
     }

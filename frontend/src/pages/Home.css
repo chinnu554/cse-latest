@@ -1,4 +1,15 @@
-.home-page h1 {
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.home-page h2 {
   margin: 30px 25px;
   border-left: 4px solid #21485e;
   color: #21485e;
@@ -8,7 +19,7 @@
   transition: opacity 0.4s ease-out, transform 0.4s ease-out;
 }
 
-.home-page h1.active {
+.home-page h2.active {
   opacity: 1;
   transform: translatex(0);
 }
@@ -76,13 +87,32 @@
 .showcase {
   background:
     linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
-    url("../assets/college-photo-scaled.webp");
+    url("/images/college-photo-scaled.webp");
   width: 100%;
   height: 100vh;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  will-change: transform;
+  content-visibility: auto;
+
+}
+
+@media (min-width: 768px) {
+  .showcase {
+    background-image:
+      linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
+      url("/images/college-photo-tablet.webp");
+  }
+}
+
+@media (min-width: 1024px) {
+  .showcase {
+    background-image:
+      linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
+      url("/images/college-photo-scaled.webp");
+  }
 }
 
 .form-container {
@@ -99,7 +129,7 @@
 .vision {
   width: 100%;
   height: 100vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url("https://t3.ftcdn.net/jpg/09/28/53/10/360_F_928531048_45ay4GSNYJuTLIHKtuR255O9ndjsHg5x.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url("https://t3.ftcdn.net/jpg/09/28/53/10/360_F_928531048_45ay4GSNYJuTLIHKtuR255O9ndjsHg5x.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -112,7 +142,7 @@
 }
 
 .mission {
-  background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url("https://insight.ieeeusa.org/wp-content/uploads/sites/2/2021/12/viewpoints-1200-780x470.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url("https://insight.ieeeusa.org/wp-content/uploads/sites/2/2021/12/viewpoints-1200-780x470.jpg");
   width: 100%;
   height: 100vh;
   background-size: cover;
@@ -126,13 +156,13 @@
   margin-top: 20px;
 }
 
-.vision h1 {
+.vision h2 {
   color: rgba(255, 255, 255, 0.822);
   border: none;
   font-size: 40px;
 }
 
-.mission h1 {
+.mission h2 {
   color: rgba(255, 255, 255, 0.822);
   border: none;
   font-size: 40px;
@@ -190,19 +220,88 @@
 }
 
 .mission ul li:nth-child(1) {
-  transition-delay: 0.2s;
+  transition-delay: 0.1s;
 }
 
 .mission ul li:nth-child(2) {
-  transition-delay: 0.4s;
+  transition-delay: 0.2s;
 }
 
 .mission ul li:nth-child(3) {
-  transition-delay: 0.6s;
+  transition-delay: 0.3s;
 }
 
 .mission ul li:nth-child(4) {
-  transition-delay: 0.8s;
+  transition-delay: 0.4s;
+}
+
+.features-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  margin: 40px 25px;
+  flex-wrap: wrap;
+}
+
+.features-grid {
+  flex: 1;
+  max-width: 600px;
+}
+
+.feature-card {
+  cursor: pointer;
+  background-color: white;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 20px;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-card.active {
+  border-left: 5px solid #21485e;
+  background-color: #f5f9fc;
+  transform: translateX(15px);
+}
+
+.feature-card h3 {
+  margin-bottom: 8px;
+  color: #21485e;
+}
+
+.feature-card p {
+  font-size: 15px;
+  color: #555;
+}
+
+.feature-img {
+  flex: 1;
+  max-width: 600px;
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  border-radius: 15px;
+  animation: fadeImage 0.4s ease-in-out;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  margin-bottom: 15px;
+}
+
+@keyframes fadeImage {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 @media (max-width: 1200px) {
@@ -222,12 +321,12 @@
 }
 
 @media (max-width: 992px) {
-  .home-page h1 {
+  .home-page h2 {
     font-size: 28px;
   }
 
-  .vision h1,
-  .mission h1 {
+  .vision h2,
+  .mission h2 {
     font-size: 34px;
   }
 
@@ -286,12 +385,28 @@
     list-style: none;
     font-size: 16px;
     margin-left: 0;
+    width: 100%;
   }
 
+  .feature-img {
+    display: none;
+  }
+
+  .feature-card {
+    border-radius: 0;
+  }
+
+  .feature-card.active {
+    background-color: white;
+    transform: none;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    border-radius: 10px;
+  }
 }
 
 @media (max-width: 576px) {
-  .home-page h1 {
+  .home-page h2 {
     font-size: 24px;
     margin: 20px 15px;
   }
@@ -310,8 +425,8 @@
     display: none;
   }
 
-  .vision h1,
-  .mission h1 {
+  .vision h2,
+  .mission h2 {
     font-size: 28px;
     margin-bottom: -10px;
     padding-top: 10px;
@@ -329,8 +444,9 @@
     font-size: 16px;
   }
 }
+
 @media (max-width: 400px) {
-  .home-page h1 {
+  .home-page h2 {
     font-size: 20px;
     margin: 15px 10px;
   }
@@ -344,8 +460,8 @@
     display: none;
   }
 
-  .vision h1,
-  .mission h1 {
+  .vision h2,
+  .mission h2 {
     font-size: 24px;
     margin-bottom: -10px;
     padding-top: 10px;

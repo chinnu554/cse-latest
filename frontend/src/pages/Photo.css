@@ -120,3 +120,13 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 768px) {
+  .react-simple-image-viewer__modal img {
+    width: 95% !important;
+    height: auto !important;
+    max-height: 80vh !important;
+    object-fit: contain !important;
+    margin: 0 auto !important;
+  }
+}

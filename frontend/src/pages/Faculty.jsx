@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+// forcing rebuild
+import Loading from '../components/Loading';
 import Fcard from '../components/Fcard';
 import "./Faculty.css";
 import SEO from "../components/SEO";
@@ -10,7 +12,7 @@ function Faculty() {
     useEffect(() => {
         try {
             async function fetchTeachers() {
-                const response = await fetch("http://localhost:5000/faculty/all-teaching");
+                const response = await fetch("https://backend.devsparks.online/faculty/all-teaching");
                 const data = await response.json();
                 setTeachers(data);
                 setLoading(false);
@@ -25,19 +27,18 @@ function Faculty() {
     return (
         <>
             <SEO
-                title="Faculty"
-                description="Meet our experienced and dedicated faculty members in the CSE department."
-                keywords="Faculty, Professors, Teachers, GKCE, CSE Department"
+                title="CSE Faculty | GKCE CSE Department"
+                description="Meet the experienced and dedicated faculty members of the Computer Science and Engineering (CSE) Department at Gokula Krishna College of Engineering, Sullurpet."
+                keywords="GKCE CSE faculty, CSE professors GKCE, Gokula Krishna College faculty CSE, engineering teachers GKCE, GKCE Sullurpet CSE department"
+                canonicalUrl="https://gkce-cse.in/faculty"
             />
+
             <div className='teaching-matter'>
                 <h1>Faculty</h1>
             </div>
             {
                 loading ? (
-                    <div className="loading-container">
-                        <div className="spinner"></div>
-                        <p>Loading faculty...</p>
-                    </div>
+                    <Loading message="Loading faculty..." minHeight="50vh" />
                 ) : (
                     <div className='teacher-section'>
                         {

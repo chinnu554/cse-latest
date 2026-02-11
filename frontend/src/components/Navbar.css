@@ -8,7 +8,7 @@
   padding: 0 20px;
   position: sticky;
   top: 0;
-  z-index: 100000000;
+  z-index: 1000;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
@@ -149,7 +149,8 @@
     margin: 0px;
     border-radius: 0px 50% 50% 0px;
     position: fixed;
-    bottom: 400px;
+    top: 50%;
+    transform: translateY(-50%);
     z-index: 1000;
   }
 
@@ -163,7 +164,7 @@
     padding: 30px;
     transition: left 0.3s ease;
     overflow-y: scroll;
-    z-index: 100000000;
+    z-index: 1001;
   }
 
 
@@ -212,18 +213,22 @@
     color: #6ecff6;
   }
 }
+
 @media screen and (max-width: 400px) {
   .marquee {
     width: 300px;
   }
-  .mob-slide-btn{
+
+  .mob-slide-btn {
     bottom: 250px;
   }
-  .slidebar{
-   padding: 20px; 
+
+  .slidebar {
+    padding: 20px;
   }
-  .mob-links{
+
+  .mob-links {
     gap: 2px;
   }
 
-}    
+}

@@ -35,10 +35,12 @@ function DeptFac() {
   return (
     <>
       <SEO
-        title="Department Facilities"
-        description="State-of-the-art laboratories and audio-visual halls for CSE students."
-        keywords="Labs, Computer Labs, Seminar Hall, AV Hall, Infrastructure"
+        title="CSE Department Facilities | GKCE CSE Sullurpet"
+        description="Explore the modern computer laboratories, seminar halls, AV halls, and infrastructure facilities of the Computer Science and Engineering (CSE) Department at Gokula Krishna College of Engineering, Sullurpet."
+        keywords="GKCE CSE facilities, GKCE computer labs, CSE infrastructure GKCE, GKCE seminar hall, GKCE AV hall, GKCE Sullurpet CSE department"
+        canonicalUrl="https://gkce-cse.in/facilities"
       />
+
       <div className="dept-fac">
         <h1 className="page-title">Department Facilities</h1>
 
@@ -89,6 +91,9 @@ function DeptFac() {
             disableScroll={false}
             closeOnClickOutside={true}
             onClose={closeViewer}
+            backgroundStyle={{
+              zIndex: 10000
+            }}
           />
         )}
       </div>
