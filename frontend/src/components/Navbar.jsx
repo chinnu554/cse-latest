@@ -60,7 +60,7 @@ function Navbar() {
                     <p className="seperator" >─────────────────</p>
                     <Link className="mob-link" onClick={() => { setOpen(!open) }} to="/photo-gallery">Photo Gallery</Link>
                     <Link className="mob-link" onClick={() => { setOpen(!open) }} to="/">Placements</Link>
-
+                    <p className="seperator" >─────────────────</p>
                   </div>
                 </div>
               }
@@ -108,7 +108,7 @@ function Navbar() {
                   <button>Others▾</button>
                   <div className="content">
                     <Link to="/photo-gallery">Photos Gallery</Link>
-                    <Link to="">Placements</Link>
+                    <Link to="/">Placements</Link>
                   </div>
                 </div>
 

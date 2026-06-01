@@ -70,31 +70,28 @@
   opacity: 1;
 }
 
-.loading-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 50vh;
+.skeleton {
+  background: linear-gradient(90deg, #edf1f4 25%, #f8fafb 37%, #edf1f4 63%);
+  background-size: 400% 100%;
+  animation: skeleton-shimmer 1.4s ease infinite;
 }
 
-.spinner {
-  width: 50px;
-  height: 50px;
-  border: 5px solid #ccc;
-  border-top: 5px solid #000000;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin-bottom: 10px;
+.photo-skeleton-card {
+  pointer-events: none;
 }
 
-@keyframes spin {
+.photo-skeleton-image {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes skeleton-shimmer {
   0% {
-    transform: rotate(0deg);
+    background-position: 100% 50%;
   }
 
   100% {
-    transform: rotate(360deg);
+    background-position: 0 50%;
   }
 }
 

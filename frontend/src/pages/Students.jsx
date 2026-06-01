@@ -1,7 +1,34 @@
 import { useState, useEffect } from "react";
-import Loading from "../components/Loading";
 import "./Students.css";
 import SEO from "../components/SEO";
+import { API_BASE_URL } from "../config/api";
+
+const StudentSkeleton = () => (
+  <div className="students" aria-hidden="true">
+    <div className="student-heading">
+      <h1>Students</h1>
+      <div className="skeleton student-search-skeleton"></div>
+    </div>
+
+    {["Second Years", "Third Years", "Fourth Years"].map((title) => (
+      <div key={title}>
+        <div className="skeleton student-title-skeleton"></div>
+        <div className="students-cards">
+          {Array.from({ length: 4 }).map((_, index) => (
+            <div key={index} className="students-card student-skeleton-card">
+              <div className="skeleton student-name-skeleton"></div>
+              <div className="student-meta-skeleton-row">
+                <div className="skeleton student-meta-skeleton"></div>
+                <div className="skeleton student-meta-skeleton small"></div>
+                <div className="skeleton student-meta-skeleton"></div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+);
 
 function Students() {
   const [secondYears, setSecondYear] = useState([]);
@@ -11,7 +38,6 @@ function Students() {
   const [search, setSearch] = useState("");
   const [error, setError] = useState(null);
 
-  // 🔹 Sort helper (MongoDB ObjectId order)
   const sortByMongoId = (arr) => {
     if (!Array.isArray(arr)) return [];
     return [...arr].sort((a, b) => a._id.localeCompare(b._id));
@@ -23,9 +49,9 @@ function Students() {
         setLoading(true);
 
         const [secondRes, thirdRes, fourthRes] = await Promise.allSettled([
-          fetch("https://backend.devsparks.online/students/secondyears"),
-          fetch("https://backend.devsparks.online/students/thirdyears"),
-          fetch("https://backend.devsparks.online/students/fourthyears"),
+          fetch(`${API_BASE_URL}/students/secondyears`),
+          fetch(`${API_BASE_URL}/students/thirdyears`),
+          fetch(`${API_BASE_URL}/students/fourthyears`),
         ]);
 
         if (secondRes.status === "fulfilled" && secondRes.value.ok) {
@@ -74,7 +100,6 @@ function Students() {
         .toLowerCase()
         .includes(search.toLowerCase())
     );
-
   const filteredSecond = filterStudents(secondYears);
   const filteredThird = filterStudents(thirdYears);
   const filteredFourth = filterStudents(fourthYears);
@@ -94,10 +119,9 @@ function Students() {
         keywords="GKCE CSE students, CSE student list GKCE, Gokula Krishna College CSE, engineering students GKCE, CSE batches"
         canonicalUrl="https://gkce-cse.in/students"
       />
-
-
-      {loading ? (
-        <Loading message="Loading Students..." minHeight="50vh" />
+      <div>
+        {loading ? (
+        <StudentSkeleton />
       ) : error ? (
         <p style={{ textAlign: "center", color: "red" }}>{error}</p>
       ) : (
@@ -158,6 +182,8 @@ function Students() {
           </div>
         </div>
       )}
+      </div>
+      
     </>
   );
 }

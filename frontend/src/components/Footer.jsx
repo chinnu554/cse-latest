@@ -1,7 +1,6 @@
 import './Footer.css';
 import { FaInstagram, FaFacebook, FaYoutube } from "react-icons/fa"
 import{useState,useEffect} from 'react';
-import { Link } from 'react-router-dom';
 function Footer() {
     const year = new Date().getFullYear();
     useEffect(()=>{
@@ -55,7 +54,6 @@ function Footer() {
                 <li><a href="https://swayam.gov.in/" target='_blank'>Swayam</a></li>
                 <li><a href="https://ndl.iitkgp.ac.in/" target='_blank'>National Digital Library</a></li>
                 <li><a href="https://www.nptel.ac.in/" target='_blank'>NPTEL</a></li>
-                <li><Link to="admin">Admin panel</Link></li>
             </ul>
         </div>
 

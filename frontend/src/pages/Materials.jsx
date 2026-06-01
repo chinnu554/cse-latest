@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Loading from '../components/Loading';
 import SEO from "../components/SEO";
+import { API_BASE_URL } from "../config/api";
 import "./Resources.css";
 import { FaDownload, FaFileAlt } from "react-icons/fa";
 
@@ -26,7 +27,7 @@ function Materials() {
 
         try {
             const response = await fetch(
-                `https://backend.devsparks.online/resources/materials/${yearPath}`
+                `${API_BASE_URL}/resources/materials/${yearPath}`
             );
 
             if (!response.ok) throw new Error("Failed to fetch");
@@ -83,14 +84,14 @@ function Materials() {
                                         <FaFileAlt color="#3f87c2" size={20} />
                                     </div>
 
-                                    <h3>{item.subject || "Untitled Material"}</h3>
+                                    <h3>{item.subject.toUpperCase() || "Untitled Material"}</h3>
 
                                     <div className="resource-info">
                                         <p>
-                                            <strong>Semester:</strong> {item.semester || "—"}
+                                            <strong>SEMESTER:</strong> {item.semester.toUpperCase() || "—"}
                                         </p>
                                         <p>
-                                            <strong>Unit:</strong> {item.unit || "—"}
+                                            <strong>UNIT:</strong> {item.unit.toUpperCase() || "—"}
                                         </p>
                                     </div>
 

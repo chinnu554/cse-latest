@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { API_BASE_URL } from "../config/api";
 
 function PDFUpload() {
   const [file, setFile] = useState(null);
@@ -41,7 +42,7 @@ function PDFUpload() {
       data.append("subject", subject);
       data.append("unit", unit);
 
-      const response = await fetch("https://backend.devsparks.online/resources/upload-resources", {
+      const response = await fetch(`${API_BASE_URL}/resources/upload-resources`, {
         method: "POST",
         body: data,
       });

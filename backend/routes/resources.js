@@ -23,11 +23,19 @@ router.get("/materials", async (req, res) => {
   }
 });
 router.get("/materials/download/:filename", (req, res) => {
-  const filename = req.params.filename;
-  const filePath = path.join(MATERIALS_DIR, filename);
+  const filename = path.basename(req.params.filename);
+  const filePath = path.resolve(MATERIALS_DIR, filename);
+  const materialsPath = path.resolve(MATERIALS_DIR);
 
+  if (!filePath.startsWith(materialsPath)) {
+    return res.status(400).json({ error: "Invalid file path" });
+  }
 
-  res.download(filePath);
+  res.download(filePath, (err) => {
+    if (err && !res.headersSent) {
+      return res.status(404).json({ error: "File not found" });
+    }
+  });
 });
 
 export default router;

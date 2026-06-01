@@ -23,6 +23,11 @@ function DeptFac() {
 
   const [isOpen, setIsOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [loadedImages, setLoadedImages] = useState({});
+
+  const handleImageLoad = (index) => {
+    setLoadedImages((current) => ({ ...current, [index]: true }));
+  };
 
   const openViewer = (index) => {
     if (window.innerWidth <= 768) return;
@@ -50,10 +55,13 @@ function DeptFac() {
             {allImages.slice(0, 5).map((img, index) => (
               <div className="facility-card" key={index} onClick={() => openViewer(index)}>
                 <div className="img-wrapper">
+                  {!loadedImages[index] && <div className="skeleton facility-image-skeleton"></div>}
                   <img
                     src={img.src}
                     alt={img.label}
                     loading="lazy"
+                    className={loadedImages[index] ? "loaded" : ""}
+                    onLoad={() => handleImageLoad(index)}
                   />
                 </div>
                 <div className="card-content">
@@ -70,10 +78,13 @@ function DeptFac() {
             {allImages.slice(5).map((img, index) => (
               <div className="facility-card" key={index + 5} onClick={() => openViewer(index + 5)}>
                 <div className="img-wrapper">
+                  {!loadedImages[index + 5] && <div className="skeleton facility-image-skeleton"></div>}
                   <img
                     src={img.src}
                     alt={img.label}
                     loading="lazy"
+                    className={loadedImages[index + 5] ? "loaded" : ""}
+                    onLoad={() => handleImageLoad(index + 5)}
                   />
                 </div>
                 <div className="card-content">

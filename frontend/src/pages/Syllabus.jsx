@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Loading from '../components/Loading';
 import SEO from "../components/SEO";
+import { API_BASE_URL } from "../config/api";
 import "./Resources.css";
 import { FaDownload, FaBook } from "react-icons/fa";
 
@@ -26,7 +27,7 @@ function Syllabus() {
 
         try {
             const response = await fetch(
-                `https://backend.devsparks.online/resources/syllabus/${yearPath}`
+                `${API_BASE_URL}/resources/syllabus/${yearPath}`
             );
 
             if (!response.ok) throw new Error("Failed to fetch syllabus");
@@ -84,12 +85,10 @@ function Syllabus() {
                                         <FaBook color="#3f87c2" size={20} />
                                     </div>
 
-                                    <h3>{item.subject || "Course"} Syllabus</h3>
+                                    <h3>{item.subject.toUpperCase() || "Course"} </h3>
 
                                     <div className="resource-info">
-                                        <p>
-                                            <strong>Semester:</strong> {item.semester || "—"}
-                                        </p>
+                                       
                                         <p>
                                             <strong>Updated:</strong>{" "}
                                             {item.createdAt

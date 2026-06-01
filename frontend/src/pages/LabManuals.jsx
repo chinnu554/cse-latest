@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Loading from '../components/Loading';
 import SEO from "../components/SEO";
+import { API_BASE_URL } from "../config/api";
 import "./Resources.css";
 import { FaDownload, FaFlask } from "react-icons/fa";
 
@@ -26,7 +27,7 @@ function LabManuals() {
 
         try {
             const response = await fetch(
-                `https://backend.devsparks.online/resources/lab-manuals/${yearPath}`
+                `${API_BASE_URL}/resources/lab-manuals/${yearPath}`
             );
 
             if (!response.ok) throw new Error("Failed to fetch lab manuals");
@@ -85,15 +86,13 @@ function LabManuals() {
                                         <FaFlask color="#3f87c2" size={20} />
                                     </div>
 
-                                    <h3>{item.subject || "Lab Manual"} Lab</h3>
+                                    <h3>{item.subject.toUpperCase() || "Lab Manual"} Lab</h3>
 
                                     <div className="resource-info">
                                         <p>
-                                            <strong>Semester:</strong> {item.semester || "—"}
+                                            <strong>SEMESTER:</strong> {item.semester.toUpperCase() || "—"}
                                         </p>
-                                        <p>
-                                            <strong>Unit:</strong> {item.unit || "—"}
-                                        </p>
+                                       
                                     </div>
 
                                     <a

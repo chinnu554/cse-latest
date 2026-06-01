@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./Admin.css";
 import { FaUser, FaLock } from 'react-icons/fa';
 import SEO from "../components/SEO";
+import { API_BASE_URL } from "../config/api";
 
 function AdminPanel() {
   const [accessToken, setAccessToken] = useState(false);
@@ -34,7 +35,7 @@ function AdminPanel() {
       const username = document.getElementById("username").value;
       const password = document.getElementById("password").value;
 
-      const result = await fetch("https://backend.devsparks.online/auth/login", {
+      const result = await fetch(`${API_BASE_URL}/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
@@ -65,7 +66,7 @@ function AdminPanel() {
 
     try {
       const res = await fetch(
-        "https://backend.devsparks.online/facultycreate/uploadTeaching",
+        `${API_BASE_URL}/facultycreate/uploadTeaching`,
         { method: "POST", body: formData }
       );
 
@@ -105,7 +106,7 @@ function AdminPanel() {
       formData.append("fileType", fileType);
       formData.append("unit", unit);
 
-      const res = await fetch("https://backend.devsparks.online/resources/upload-resources", {
+      const res = await fetch(`${API_BASE_URL}/resources/upload-resources`, {
         method: "POST",
         body: formData,
       });
@@ -143,7 +144,7 @@ function AdminPanel() {
     formData.append("image", sliderImage);
 
     try {
-      const res = await fetch("https://backend.devsparks.online/images/upload-slider", {
+      const res = await fetch(`${API_BASE_URL}/images/upload-slider`, {
         method: "POST",
         body: formData,
       });
@@ -175,7 +176,7 @@ function AdminPanel() {
     formData.append("image", galleryImage);
 
     try {
-      const res = await fetch("https://backend.devsparks.online/images/upload-gallery", {
+      const res = await fetch(`${API_BASE_URL}/images/upload-gallery`, {
         method: "POST",
         body: formData,
       });

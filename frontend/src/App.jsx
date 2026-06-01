@@ -1,4 +1,4 @@
-import { useState, useEffect, Suspense, lazy } from 'react';
+import { useEffect, Suspense, lazy } from 'react';
 import './Responsive.css';
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
@@ -17,7 +17,6 @@ const Materials = lazy(() => import('./pages/Materials.jsx'));
 const Syllabus = lazy(() => import('./pages/Syllabus.jsx'));
 const PYQs = lazy(() => import('./pages/PYQs.jsx'));
 const LabManuals = lazy(() => import('./pages/LabManuals.jsx'));
-
 import Loading from './components/Loading';
 
 function App() {

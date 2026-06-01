@@ -1,27 +1,41 @@
 import { useState, useEffect } from 'react';
-// forcing rebuild
-import Loading from '../components/Loading';
 import Fcard from '../components/Fcard';
 import "./Faculty.css";
 import SEO from "../components/SEO";
+import { API_BASE_URL } from "../config/api";
+
+const FacultySkeleton = () => (
+    <div className="teacher-section" aria-label="Loading faculty">
+        {Array.from({ length: 6 }).map((_, index) => (
+            <div className="f-card faculty-skeleton-card" key={index}>
+                <div className="skeleton faculty-skeleton-img"></div>
+                <div className="faculty-skeleton-content">
+                    <div className="skeleton faculty-skeleton-name"></div>
+                    <div className="skeleton faculty-skeleton-role"></div>
+                </div>
+            </div>
+        ))}
+    </div>
+);
 
 function Faculty() {
     const [teachers, setTeachers] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        try {
-            async function fetchTeachers() {
-                const response = await fetch("https://backend.devsparks.online/faculty/all-teaching");
+        async function fetchTeachers() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/faculty/all-teaching`);
                 const data = await response.json();
                 setTeachers(data);
+            } catch (err) {
+                console.log("Error occurred while fetching faculty details", err);
+            } finally {
                 setLoading(false);
             }
-            fetchTeachers();
-        } catch (err) {
-            console.log("Error occurred while fetching faculty details", err);
-            setLoading(false);
         }
+
+        fetchTeachers();
     }, []);
 
     return (
@@ -38,7 +52,7 @@ function Faculty() {
             </div>
             {
                 loading ? (
-                    <Loading message="Loading faculty..." minHeight="50vh" />
+                    <FacultySkeleton />
                 ) : (
                     <div className='teacher-section'>
                         {

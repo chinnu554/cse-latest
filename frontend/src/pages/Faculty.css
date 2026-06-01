@@ -19,10 +19,65 @@
     padding: 5px 10px;
 }
 
+.skeleton {
+    background: linear-gradient(90deg, #edf1f4 25%, #f8fafb 37%, #edf1f4 63%);
+    background-size: 400% 100%;
+    animation: skeleton-shimmer 1.4s ease infinite;
+}
+
+.faculty-skeleton-card {
+    min-height: 240px;
+    pointer-events: none;
+}
+
+.faculty-skeleton-img {
+    width: 200px;
+    height: 200px;
+    margin: 20px;
+    border-radius: 10px;
+    flex: 0 0 auto;
+}
+
+.faculty-skeleton-content {
+    width: min(260px, 45vw);
+}
+
+.faculty-skeleton-name {
+    height: 26px;
+    width: 85%;
+    border-radius: 6px;
+    margin-bottom: 18px;
+}
+
+.faculty-skeleton-role {
+    height: 16px;
+    width: 60%;
+    border-radius: 6px;
+}
+
+@keyframes skeleton-shimmer {
+    0% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0 50%;
+    }
+}
+
 
 
 @media screen and (max-width:768px) {
     .teacher-section {
         flex-direction: column;
+    }
+
+    .faculty-skeleton-card {
+        min-height: 140px;
+    }
+
+    .faculty-skeleton-img {
+        width: 100px;
+        height: 100px;
     }
 }

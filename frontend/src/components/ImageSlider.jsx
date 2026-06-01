@@ -3,6 +3,7 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import ImageViewer from "react-simple-image-viewer";
 import { useState, useEffect } from "react";
 import Loading from "./Loading";
+import { API_BASE_URL } from "../config/api";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -19,7 +20,7 @@ function ImageSlider() {
   useEffect(() => {
     async function fetchSliderImages() {
       try {
-        const res = await fetch("https://backend.devsparks.online/images/slider-images");
+        const res = await fetch(`${API_BASE_URL}/images/slider-images`);
         const data = await res.json();
         setImgs(data.data || data);
         setLoading(false);

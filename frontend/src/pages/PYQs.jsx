@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Loading from '../components/Loading';
 import SEO from "../components/SEO";
+import { API_BASE_URL } from "../config/api";
 import "./Resources.css";
 import { FaDownload, FaQuestionCircle } from "react-icons/fa";
 
@@ -26,7 +27,7 @@ function PYQs() {
 
         try {
             const response = await fetch(
-                `https://backend.devsparks.online/resources/pyqs/${yearPath}`
+                `${API_BASE_URL}/resources/pyqs/${yearPath}`
             );
 
             if (!response.ok) throw new Error("Failed to fetch PYQs");
@@ -83,14 +84,12 @@ function PYQs() {
                                         <FaQuestionCircle color="#3f87c2" size={20} />
                                     </div>
 
-                                    <h3>{item.subject || "Question Paper"}</h3>
+                                    <h3>{item.subject.toUpperCase() || "Question Paper"}</h3>
 
                                     <div className="resource-info">
+                                        
                                         <p>
-                                            <strong>Exam Year:</strong> {item.examYear || "—"}
-                                        </p>
-                                        <p>
-                                            <strong>Semester:</strong> {item.semester || "—"}
+                                            <strong>SEMESTER:</strong> {item.semester.toUpperCase() || "—"}
                                         </p>
                                     </div>
 

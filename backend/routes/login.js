@@ -1,6 +1,10 @@
 import express from 'express';
 import { comparePassword } from '../middleware/bcrypt.js';
 import { getAdminDB } from '../config/mongoConnect.js';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
 
 const router = express.Router();
 
@@ -33,5 +37,4 @@ router.post('/login', async (req, res, next) => {
         next(err);
     }
 });
-
 export default router;

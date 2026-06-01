@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import ImageViewer from "react-simple-image-viewer";
 import "./Photo.css";
 import SEO from "../components/SEO";
+import { API_BASE_URL } from "../config/api";
 
 function Photo() {
   const [photos, setPhotos] = useState([]);
@@ -25,7 +26,7 @@ function Photo() {
   useEffect(() => {
     async function fetchPhoto() {
       try {
-        const response = await fetch("https://backend.devsparks.online/images/photo-gallery");
+        const response = await fetch(`${API_BASE_URL}/images/photo-gallery`);
         const images = await response.json();
         setPhotos(images);
       } catch (err) {
@@ -46,6 +47,16 @@ function Photo() {
     setIsViewerOpen(false);
   };
 
+  const PhotoSkeleton = () => (
+    <div className="album" aria-label="Loading photos">
+      {Array.from({ length: 9 }).map((_, index) => (
+        <div className="photo-card photo-skeleton-card" key={index}>
+          <div className="skeleton photo-skeleton-image"></div>
+        </div>
+      ))}
+    </div>
+  );
+
   return (
     <>
       <SEO
@@ -62,10 +73,7 @@ function Photo() {
         </div>
 
         {loading ? (
-          <div className="loading-container">
-            <div className="spinner"></div>
-            <p>Loading photos...</p>
-          </div>
+          <PhotoSkeleton />
         ) : (
           <div className="album">
             {photos.length > 0 ? (
