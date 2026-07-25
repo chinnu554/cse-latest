@@ -25,13 +25,7 @@ app.use(cors({
 
 app.use(morgan("dev"));
 
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 100,
-  standardHeaders: true,
-  legacyHeaders: false,
-});
-app.use(limiter);
+
 
 app.use(express.json());
 

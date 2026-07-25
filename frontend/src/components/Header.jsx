@@ -1,13 +1,27 @@
 import logo from '../assets/GKCE-LOGO.png'
+import branhLogo from "../../images/clg-logo1.png"
 import './Header.css'
 import { FaPhone, FaEnvelope } from 'react-icons/fa'
-
+import { useState , useEffect } from 'react'
 function Header() {
+  const [mobile,setMobile] = useState(false);
+  useEffect(() => {
+      const checkScreen = () => {
+        setMobile(window.innerWidth < 768);
+      };
+      checkScreen();
+      window.addEventListener("resize", checkScreen)
+      return () => {
+        window.removeEventListener("resize", checkScreen)
+      }
+    }, [])
   return (
     <header className='header'>
       <div style={{ display: "flex", gap: "10px", justifyContent: "center", alignItems: "center" }}>
-        <img src={logo} alt="Gokula Krishna College of Engineering Logo" className='clg-logo' />
-
+        {
+          (!mobile && <img src={logo} alt="Gokula Krishna College of Engineering Logo" className='clg-logo' />)
+        }
+        <img src={branhLogo} alt="Computer Science and Engineering" className='clg-logo' />
         <div className="title">
           <h1>Computer Science Engineering</h1>
           <h3>Gokula Krishna College of Engineering</h3>

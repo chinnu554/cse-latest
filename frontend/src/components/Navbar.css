@@ -154,6 +154,23 @@
     z-index: 1000;
   }
 
+  .sidebar-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+  }
+
+  .sidebar-backdrop.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
   .slidebar {
     position: fixed;
     top: 0;
@@ -164,7 +181,7 @@
     padding: 30px;
     transition: left 0.3s ease;
     overflow-y: scroll;
-    z-index: 1001;
+    z-index: 1002;
   }
 
 

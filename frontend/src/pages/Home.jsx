@@ -41,7 +41,7 @@ function Home() {
             description:
                 "Well-equipped laboratories with latest software tools.",
             image:
-                "https://www.dgu.ac/images/labs/SAP_Lab_2024.jpg"
+                "http://localhost:5173/images/lab-images/lab5.png"
         },
         {
             title: "Real-Time Projects",
@@ -62,7 +62,7 @@ function Home() {
             description:
                 "Training sessions, mock interviews, aptitude classes, and campus recruitment.",
             image:
-                "https://sherpact.com/wp-content/uploads/2025/05/f7773610-a438-4fe5-87b8-89161785a528_2-1-scaled.jpg"
+                "https://profenaatechnologies.com/Asstets/Homepage/why-Placement%20Assist.jpg"
         }
     ];
     return (

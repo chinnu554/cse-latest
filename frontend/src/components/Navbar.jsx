@@ -4,6 +4,8 @@ import { useState, useEffect } from "react"
 function Navbar() {
   const [mobile, setMobile] = useState(false);
   const [open, setOpen] = useState(false);
+  const closeSidebar = () => setOpen(false);
+
   useEffect(() => {
     const checkScreen = () => {
       setMobile(window.innerWidth < 768);
@@ -41,28 +43,35 @@ function Navbar() {
             <div className="besties">
               {
 
+                <>
+                <div
+                  className={`sidebar-backdrop ${open ? "open" : ""}`}
+                  onClick={closeSidebar}
+                  aria-hidden="true"
+                />
                 <div className={`slidebar ${open ? "open" : "closed"}`}>
-                  <button onClick={() => { setOpen(!open) }} className="close-button">X</button>
+                  <button onClick={closeSidebar} className="close-button">X</button>
                   <div className="mob-links">
-                    <Link className="mob-link" onClick={() => { setOpen(!open) }} to="/">Home</Link>
+                    <Link className="mob-link" onClick={closeSidebar} to="/">Home</Link>
                     <p className="seperator" >─────────────────</p>
-                    <Link className="mob-link" onClick={() => { setOpen(!open) }} to="/academic">Academics</Link>
+                    <Link className="mob-link" onClick={closeSidebar} to="/academic">Academics</Link>
                     <p className="seperator" >─────────────────</p>
-                    <Link className="mob-link" onClick={() => { setOpen(!open) }} to="/faculty">Faculty</Link>
-                    <Link className="mob-link" onClick={() => { setOpen(!open) }} to="/students">Students</Link>
+                    <Link className="mob-link" onClick={closeSidebar} to="/faculty">Faculty</Link>
+                    <Link className="mob-link" onClick={closeSidebar} to="/students">Students</Link>
                     <p className="seperator" >─────────────────</p>
-                    <Link className="mob-link" onClick={() => { setOpen(!open) }} to="/dept-facility">Dept Facilities</Link>
+                    <Link className="mob-link" onClick={closeSidebar} to="/dept-facility">Dept Facilities</Link>
                     <p className="seperator" >─────────────────</p>
-                    <Link className="mob-link" onClick={() => { setOpen(!open) }} to="/resources/materials">Materials</Link>
-                    <Link className="mob-link" onClick={() => { setOpen(!open) }} to="/resources/syllabus">Syllabus</Link>
-                    <Link className="mob-link" onClick={() => { setOpen(!open) }} to="/resources/pyqs">PYQ's</Link>
-                    <Link className="mob-link" onClick={() => { setOpen(!open) }} to="/resources/lab-manuals">Lab Manuals</Link>
+                    <Link className="mob-link" onClick={closeSidebar} to="/resources/materials">Materials</Link>
+                    <Link className="mob-link" onClick={closeSidebar} to="/resources/syllabus">Syllabus</Link>
+                    <Link className="mob-link" onClick={closeSidebar} to="/resources/pyqs">PYQ's</Link>
+                    <Link className="mob-link" onClick={closeSidebar} to="/resources/lab-manuals">Lab Manuals</Link>
                     <p className="seperator" >─────────────────</p>
-                    <Link className="mob-link" onClick={() => { setOpen(!open) }} to="/photo-gallery">Photo Gallery</Link>
-                    <Link className="mob-link" onClick={() => { setOpen(!open) }} to="/">Placements</Link>
+                    <Link className="mob-link" onClick={closeSidebar} to="/photo-gallery">Photo Gallery</Link>
+                    <Link className="mob-link" onClick={closeSidebar} to="/">Placements</Link>
                     <p className="seperator" >─────────────────</p>
                   </div>
                 </div>
+                </>
               }
               <button className="mob-slide-btn" onClick={() => setOpen(!open)}>&#9776;</button>
             </div>
